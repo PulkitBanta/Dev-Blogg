@@ -1,12 +1,19 @@
 package com.pukitbanta.springblog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.pukitbanta.springblog.dto.LoginRequest;
 import com.pukitbanta.springblog.dto.RegisterRequest;
 import com.pukitbanta.springblog.model.User;
 import com.pukitbanta.springblog.repository.UserRepository;
+import com.pukitbanta.springblog.security.JwtProvider;
 
 @Service
 public class AuthService {
@@ -16,6 +23,12 @@ public class AuthService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private JwtProvider jwtProvider;
 	
 	public void signup(RegisterRequest registerRequest) {
 		User user = new User();
@@ -30,6 +43,11 @@ public class AuthService {
 		return passwordEncoder.encode(password);
 	}
 	
-	
+	public String login (LoginRequest loginRequest) {
+		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+				loginRequest.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authenticate);
+		return jwtProvider.generateToken(authenticate);
+	}
 	
 }
