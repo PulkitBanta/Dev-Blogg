@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table
@@ -17,11 +18,11 @@ public class post {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-//	@NotBlank
+	@NotBlank
 	@Column
 	private String title;
 	
-//	@NotBlank
+	@NotBlank
 	@Lob
 	@Column
 	private String content;
@@ -32,7 +33,7 @@ public class post {
 	@Column
 	private String updatedOn;
 	
-//	@NotBlank
+	@NotBlank
 	@Column
 	private String username;
 
