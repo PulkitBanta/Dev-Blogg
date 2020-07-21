@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table
-public class post {
+public class Post {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
