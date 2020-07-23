@@ -1,0 +1,15 @@
+a {
+    color: white;
+}
+
+.tw-ic:hover {
+    color: #00acee;
+}
+
+.li-ic:hover {
+    color: #0e76a8;
+}
+
+.github-ic:hover {
+    color: gray;
+}
