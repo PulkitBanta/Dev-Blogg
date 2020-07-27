@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private url='http://localhost:8080/api/auth'
+  private url = 'port_address/api/auth'
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'application/json' })

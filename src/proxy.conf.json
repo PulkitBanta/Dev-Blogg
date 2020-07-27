@@ -1,0 +1,8 @@
+{
+    "/port_address": {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite" : {"^/port_address" : ""}
+    }
+}

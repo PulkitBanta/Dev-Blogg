@@ -52,8 +52,8 @@ export class RegisterComponent implements OnInit {
     }, error => {
       this.bool = false
       this.signup = false
+      console.log(error);
     }
     )
   }
-
 }
