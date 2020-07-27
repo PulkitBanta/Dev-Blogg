@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="alert alert-warning alert-dismissible fade show m-3" role="alert" [hidden]='bool'>
+        Failed to register! No field should be empty.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show m-3" role="alert" [hidden]='!signup'>
+        You have signed up successfully.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="my-5">
+        <div class="form-group">
+            <input type="username" class="form-control" placeholder="Enter your name" id="username" formControlName="username" autofocus>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter your email .. example@gmail.com" id="email" formControlName="email" autofocus>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName="password">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Confirm password" id="pwd" formControlName="confirmPassword">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" formControlName="terms"> Agree <strong>Terms and Conditions*</strong>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="text-center" class="btn btn-primary">Signup</button>
+    </form>
+</div>
