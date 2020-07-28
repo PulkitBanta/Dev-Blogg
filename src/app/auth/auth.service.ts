@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { RegisterRequest } from './RegisterRequest';
 import { Observable } from 'rxjs';
 import { LoginRequest } from './LoginRequest';
+import { map } from 'rxjs/operators'
+import { LocalStorageService } from 'ngx-webstorage';
+import { AuthResponse } from './jwt-auth-response';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +19,20 @@ export class AuthService {
   }
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
   ) { }
 
   register(registerRequest: RegisterRequest): Observable<any> {
     return this.http.post(`${this.url}/signup`, registerRequest, this.httpOptions)
   }
 
-  login(loginrRequest: LoginRequest): Observable<any> {
-    return this.http.post(`${this.url}/login`, loginrRequest, this.httpOptions)
+  login(loginRequest: LoginRequest): Observable<Boolean> {
+    return this.http.post<AuthResponse>(`${this.url}/login`, loginRequest, this.httpOptions).pipe(map( data => {
+      this.localStorageService.store('authenticationToken', data.authenticationToken)
+      this.localStorageService.store('username', data.username)
+      console.log(data)
+      return true;
+    }))
   }
 }

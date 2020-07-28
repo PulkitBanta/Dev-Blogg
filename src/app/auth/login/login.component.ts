@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthenticationService } from '../authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
 import { LoginRequest } from '../LoginRequest';
 import { AuthService } from '../auth.service';
 
@@ -19,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(
     // private auth: AuthenticationService,
     private fb: FormBuilder,
-    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -39,7 +36,13 @@ export class LoginComponent implements OnInit {
     this.loginRequest.username = this.loginForm.get('username').value;
     this.loginRequest.password = this.loginForm.get('password').value;
 
-    this.authService.login(this.loginRequest);
+    this.authService.login(this.loginRequest).subscribe(
+      res => console.log(res),
+      error => {
+        console.log(error);
+        this.bool = false;
+      }
+    )
   }
 
 }
