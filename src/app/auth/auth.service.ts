@@ -29,6 +29,7 @@ export class AuthService {
   login(loginRequest: LoginRequest): Observable<Boolean> {
     return this.http.post(`${this.url}login`, loginRequest, {responseType: 'text'}).pipe(map( data => {
       this.localStorageService.store('authenticationToken', data)
+      console.log(data)
       return true;
     }))
   }

@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   loginRequest: LoginRequest
 
   constructor(
-    // private auth: AuthenticationService,
     private fb: FormBuilder,
     private authService: AuthService
   ) { }
@@ -40,6 +39,7 @@ export class LoginComponent implements OnInit {
       res => console.log(res),
       error => {
         this.bool = false;
+        console.log(error)
       }
     )
   }
