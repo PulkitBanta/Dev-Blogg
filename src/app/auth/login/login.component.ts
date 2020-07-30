@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
   bool = true
-  private loginRequest: LoginRequest
+  loginRequest: LoginRequest
 
   constructor(
     // private auth: AuthenticationService,
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginRequest).subscribe(
       res => console.log(res),
       error => {
-        console.log(error);
         this.bool = false;
       }
     )

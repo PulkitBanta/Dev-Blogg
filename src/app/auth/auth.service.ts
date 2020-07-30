@@ -5,14 +5,13 @@ import { Observable } from 'rxjs';
 import { LoginRequest } from './LoginRequest';
 import { map } from 'rxjs/operators'
 import { LocalStorageService } from 'ngx-webstorage';
-import { AuthResponse } from './jwt-auth-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url = 'port_address/api/auth'
+  private url = 'port_address/api/auth/'
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'application/json' })
@@ -24,14 +23,12 @@ export class AuthService {
   ) { }
 
   register(registerRequest: RegisterRequest): Observable<any> {
-    return this.http.post(`${this.url}/signup`, registerRequest, this.httpOptions)
+    return this.http.post(`${this.url}signup`, registerRequest, this.httpOptions)
   }
 
   login(loginRequest: LoginRequest): Observable<Boolean> {
-    return this.http.post<AuthResponse>(`${this.url}/login`, loginRequest, this.httpOptions).pipe(map( data => {
-      this.localStorageService.store('authenticationToken', data.authenticationToken)
-      this.localStorageService.store('username', data.username)
-      console.log(data)
+    return this.http.post(`${this.url}login`, loginRequest, {responseType: 'text'}).pipe(map( data => {
+      this.localStorageService.store('authenticationToken', data)
       return true;
     }))
   }
