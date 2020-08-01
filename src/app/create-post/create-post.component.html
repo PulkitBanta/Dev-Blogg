@@ -1,0 +1,13 @@
+<div class="container">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="my-5">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="title" class="form-control" placeholder="Title goes here ..." id="title" formControlName="title" autofocus>
+        </div>
+        <div class="form-group">
+            <label for="body">Body</label>
+            <ckeditor formControlName='body' [config]="config"></ckeditor>
+        </div>
+        <button class="btn btn-success">Post</button>
+    </form>
+</div>
