@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { EditorConfig } from './editor-config';
+import { PostRequest } from './PostRequest';
 
 @Component({
   selector: 'app-create-post',
@@ -13,6 +14,8 @@ export class CreatePostComponent implements OnInit {
 
   config = EditorConfig
 
+  private postRequest: PostRequest
+
   constructor(
     private fb: FormBuilder
   ) { }
@@ -22,10 +25,18 @@ export class CreatePostComponent implements OnInit {
       title: '',
       body: ''
     })
+
+    this.postRequest = {
+      id: '',
+      title: '',
+      content: '',
+      username: ''
+    }
   }
-
+  
   onSubmit() {
-
+    this.postRequest.title = this.postForm.get('title').value;
+    this.postRequest.content = this.postForm.get('body').value;
   }
 
 }
