@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { EditorConfig } from './editor-config';
 import { PostRequest } from './PostRequest';
+import { AddPostService } from '../add-post.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-create-post',
@@ -17,7 +19,9 @@ export class CreatePostComponent implements OnInit {
   private postRequest: PostRequest
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private postService: AddPostService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,10 +37,20 @@ export class CreatePostComponent implements OnInit {
       username: ''
     }
   }
-  
+
   onSubmit() {
     this.postRequest.title = this.postForm.get('title').value;
     this.postRequest.content = this.postForm.get('body').value;
+
+    this.postService.addPost(this.postRequest).subscribe( data => {
+      console.log(data);
+      setTimeout(() => {
+        this.router.navigateByUrl('/home')
+      })
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

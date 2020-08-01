@@ -9,7 +9,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'create-post', component: CreatePostComponent }
 ];
 
