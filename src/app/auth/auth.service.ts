@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { RegisterRequest } from './RegisterRequest';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { LoginRequest } from './LoginRequest';
 import { map } from 'rxjs/operators'
 import { LocalStorageService } from 'ngx-webstorage';
@@ -34,8 +34,8 @@ export class AuthService {
     }))
   }
 
-  isAuthenticated(): Boolean {
-    return this.localStorageService.retrieve('authenticationToken') != null;
+  get isAuthenticated() {
+    return of(this.localStorageService.retrieve('authenticationToken') != null);
   }
 
 }
