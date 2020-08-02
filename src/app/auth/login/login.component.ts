@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
   bool = true
+  loggedin = true
   loginRequest: LoginRequest
 
   constructor(
@@ -40,15 +41,26 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginRequest).subscribe(
       res => {
         console.log(res);
+        this.loginSuccessful()
         setTimeout(() => {
           this.router.navigateByUrl("/home");
         }, 500)
       },
       error => {
-        this.bool = false;
+        this.loginUnsuccessful()
         console.log(error)
       }
     )
+  }
+
+  loginSuccessful() {
+    this.loggedin = false;
+    this.bool = true;
+  }
+
+  loginUnsuccessful() {
+    this.loggedin = true;
+    this.bool = false;
   }
 
 }

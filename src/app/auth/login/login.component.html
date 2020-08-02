@@ -5,6 +5,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    <div class="alert alert-success alert-dismissible fade show m-3" role="alert" [hidden]='loggedin'>
+        Successfully logged in 😃
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="my-5">
         <div class="form-group">
             <input type="username" class="form-control" placeholder="Enter username" id="username" formControlName='username' required autofocus>
