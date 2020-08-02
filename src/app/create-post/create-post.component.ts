@@ -13,6 +13,8 @@ import { Router } from '@angular/router'
 export class CreatePostComponent implements OnInit {
 
   postForm: FormGroup
+  post: Boolean = true
+  error: Boolean = true;
 
   config = EditorConfig
 
@@ -42,15 +44,32 @@ export class CreatePostComponent implements OnInit {
     this.postRequest.title = this.postForm.get('title').value;
     this.postRequest.content = this.postForm.get('body').value;
 
-    this.postService.addPost(this.postRequest).subscribe( data => {
-      console.log(data);
-      setTimeout(() => {
-        this.router.navigateByUrl('/home')
-      })
-    },
-    error => {
-      console.log(error);
-    });
+    if(this.postRequest.title != null && this.postRequest.content != null) {
+      this.postService.addPost(this.postRequest).subscribe( data => {
+        console.log(data);
+        this.postSuccessful();
+        setTimeout(() => {
+          this.router.navigateByUrl('/home')
+        })
+      },
+      error => {
+        this.postUnsuccessful();
+        console.log(error);
+      });
+    } else {
+      this.postUnsuccessful();
+    }
+
+  }
+
+  postSuccessful() {
+    this.post = false;
+    this.error = true;
+  }
+
+  postUnsuccessful() {
+    this.post = true;
+    this.error = false;
   }
 
 }
