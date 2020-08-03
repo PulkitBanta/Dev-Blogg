@@ -25,4 +25,8 @@ export class PostService {
   getPosts(): Observable<Array<PostRequest>> {
     return this.http.get<Array<PostRequest>>(this.url);
   }
+
+  getPost(id: number): Observable<PostRequest> {
+    return this.http.get<PostRequest>(`${this.url}/${id}`);
+  }
 }
