@@ -34,8 +34,8 @@ export class AuthService {
     }))
   }
 
-  get isAuthenticated() {
-    return of(this.localStorageService.retrieve('authenticationToken') != null);
+  isAuthenticated(): Boolean {
+    return this.localStorageService.retrieve('authenticationToken') != null;
   }
 
 }
