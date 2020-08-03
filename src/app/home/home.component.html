@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="m-5" *ngFor='let post of posts$'>
+        <h3 class="text-center font-weight-bold">{{ post.title }}</h3>
+        <p class="text-right text-muted">Posted By: {{ post.username }}</p>
+        <div class="text-justify" [innerHTML]="post.content"></div>
+        <a routerLink="/posts/{{post.id}}">Read more ...</a>
+        <hr>
+    </div>
+</div>
