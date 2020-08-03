@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { EditorConfig } from './editor-config';
 import { PostRequest } from './PostRequest';
-import { AddPostService } from '../add-post.service';
+import { PostService } from '../post.service';
 import { Router } from '@angular/router'
 
 @Component({
@@ -22,7 +22,7 @@ export class CreatePostComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private postService: AddPostService,
+    private postService: PostService,
     private router: Router
   ) { }
 

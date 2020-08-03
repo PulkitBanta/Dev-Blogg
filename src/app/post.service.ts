@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AddPostService {
+export class PostService {
 
   private url = 'port_address/api/posts'
 
@@ -20,5 +20,9 @@ export class AddPostService {
 
   addPost(postRequest: PostRequest): Observable<any> {
     return this.http.post(this.url, postRequest, this.httpOptions);
+  }
+
+  getPosts(): Observable<Array<PostRequest>> {
+    return this.http.get<Array<PostRequest>>(this.url);
   }
 }
