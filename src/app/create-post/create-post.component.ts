@@ -50,7 +50,7 @@ export class CreatePostComponent implements OnInit {
         this.postSuccessful();
         setTimeout(() => {
           this.router.navigateByUrl('/home')
-        })
+        }, 500)
       },
       error => {
         this.postUnsuccessful();
