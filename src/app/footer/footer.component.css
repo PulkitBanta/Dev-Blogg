@@ -15,5 +15,9 @@ a {
 }
 
 .bg-custom {
-    background-color: gray;
+    background-color: #73767c;
+}
+
+.gray-text {
+    color: #e9e9ea;
 }

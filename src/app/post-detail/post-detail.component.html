@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <h1 class="heading text-center">{{ post$.title | uppercase }}</h1>
+    <h1 class="heading text-center">{{ post$.title | uppercase}}</h1>
     <p class="text-right text-muted">Posted By: {{ post$.username }}</p>
     <div [innerHTML]="post$.content"></div>
 </div>

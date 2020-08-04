@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostDetailComponent implements OnInit {
 
-  post$: PostRequest
+  post$
 
   constructor(
     private postService: PostService,
