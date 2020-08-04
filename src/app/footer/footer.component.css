@@ -11,5 +11,9 @@ a {
 }
 
 .github-ic:hover {
-    color: gray;
+    color: rgb(102, 101, 101);
+}
+
+.bg-custom {
+    background-color: gray;
 }
