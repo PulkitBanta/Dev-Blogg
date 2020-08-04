@@ -20,6 +20,13 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPost();
+
+    this.post$ = {
+      username: '',
+      title: '',
+      id: '',
+      content: ''
+    }
   }
 
   getPost() {

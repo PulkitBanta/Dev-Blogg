@@ -5,3 +5,12 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: Charter;
+    src: url(/src/assets/charter_regular-webfont.woff);
+}
+
+.heading {
+    font-family: Charter;
+}
