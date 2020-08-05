@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostDetailComponent implements OnInit {
 
-  post$
+  post
 
   constructor(
     private postService: PostService,
@@ -21,7 +21,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getPost();
 
-    this.post$ = {
+    this.post = {
       username: '',
       title: '',
       id: '',
@@ -33,7 +33,7 @@ export class PostDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id')
     this.postService.getPost(id)
       .subscribe( res => {
-        this.post$ = res
+        this.post = res
       }, error => console.log(error))
   }
 

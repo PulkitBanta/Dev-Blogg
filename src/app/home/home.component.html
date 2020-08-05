@@ -1,9 +1,15 @@
 <div class="container">
-    <div class="m-5" *ngFor='let post of posts$'>
-        <h1 class="heading text-center">{{ post.title | uppercase }}</h1>
-        <p class="text-right text-muted">Posted By: {{ post.username }}</p>
-        <div class="text-justify" [innerHTML]="post.content"></div>
-        <a routerLink="/posts/{{post.id}}">Read more ...</a>
-        <hr>
+    <div class="my-5" *ngFor='let post of posts$'>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="mx-md-5">
+                    <h2 class="font-Charter card-title text-center">{{ post.title }}</h2>
+                    <h6 class="card-subtitle mb-2 text-muted text-right">Posted By: {{ post.username }}</h6>
+                </div>
+                <hr>
+                <div class="card-text m-md-5" [innerHTML]="post.content">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
+                <a routerLink="/posts/{{post.id}}">Read more ...</a>
+            </div>
+        </div>
     </div>
 </div>
