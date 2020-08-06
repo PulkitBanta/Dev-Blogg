@@ -37,26 +37,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.fvService.validateEmail(this.loginForm.get('email').value) && this.fvService.validatePassword(this.loginForm.get('password').value)) {
-      this.loginRequest.username = this.loginForm.get('username').value;
-      this.loginRequest.password = this.loginForm.get('password').value;
+    this.loginRequest.username = this.loginForm.get('username').value;
+    this.loginRequest.password = this.loginForm.get('password').value;
 
-      this.authService.login(this.loginRequest).subscribe(
-        res => {
-          console.log(res);
-          this.loginSuccessful()
-          setTimeout(() => {
-            this.router.navigateByUrl("/home");
-          }, 500)
-        },
-        error => {
-          this.loginUnsuccessful()
-          console.log(error)
-        }
-      )
-    } else {
-      this.loginUnsuccessful();
-    }
+    this.authService.login(this.loginRequest).subscribe(
+      res => {
+        console.log(res);
+        this.loginSuccessful()
+        setTimeout(() => {
+          this.router.navigateByUrl("/home");
+        }, 500)
+      },
+      error => {
+        this.loginUnsuccessful()
+        console.log(error)
+      }
+    )
   }
 
   loginSuccessful() {
