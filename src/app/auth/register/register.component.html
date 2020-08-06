@@ -14,6 +14,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="my-5">
         <div class="form-group">
             <input type="username" class="form-control" placeholder="Enter your name" id="username" formControlName="username" autofocus>
+            <small id="username-help" class="form-text text-muted">Username must be atleast 6 charaters long</small>
         </div>
         <div class="form-group">
             <input type="email" class="form-control" placeholder="Enter your email .. example@gmail.com" id="email" formControlName="email" autofocus>
@@ -23,6 +24,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName="password">
+                    <small id="emailHelp" class="form-text text-muted">Password must contain: one upercase, one lowercase letter and between 6 to 20 characters.</small>
                 </div>
             </div>
             <div class="col-md-6">
