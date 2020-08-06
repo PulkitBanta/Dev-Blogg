@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginRequest } from '../LoginRequest';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { FormValidationService } from '../form-validation.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private fvService: FormValidationService
   ) { }
 
   ngOnInit(): void {
@@ -35,22 +37,26 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loginRequest.username = this.loginForm.get('username').value;
-    this.loginRequest.password = this.loginForm.get('password').value;
+    if (this.fvService.validateEmail(this.loginForm.get('email').value) && this.fvService.validatePassword(this.loginForm.get('password').value)) {
+      this.loginRequest.username = this.loginForm.get('username').value;
+      this.loginRequest.password = this.loginForm.get('password').value;
 
-    this.authService.login(this.loginRequest).subscribe(
-      res => {
-        console.log(res);
-        this.loginSuccessful()
-        setTimeout(() => {
-          this.router.navigateByUrl("/home");
-        }, 500)
-      },
-      error => {
-        this.loginUnsuccessful()
-        console.log(error)
-      }
-    )
+      this.authService.login(this.loginRequest).subscribe(
+        res => {
+          console.log(res);
+          this.loginSuccessful()
+          setTimeout(() => {
+            this.router.navigateByUrl("/home");
+          }, 500)
+        },
+        error => {
+          this.loginUnsuccessful()
+          console.log(error)
+        }
+      )
+    } else {
+      this.loginUnsuccessful();
+    }
   }
 
   loginSuccessful() {
