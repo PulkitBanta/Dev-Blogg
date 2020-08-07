@@ -26,7 +26,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     LoginComponent,
     HomeComponent,
     CreatePostComponent,
-    PostDetailComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
