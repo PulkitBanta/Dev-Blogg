@@ -15,4 +15,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout() {
+    // navigate to login component
+    console.log("called logout")
+    this.authService.logout();
+  }
+
 }

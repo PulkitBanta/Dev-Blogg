@@ -34,6 +34,11 @@ export class AuthService {
     }))
   }
 
+  logout() {
+    // clear the local storage in the browser
+    this.localStorageService.clear('authenticationToken')
+  }
+
   isAuthenticated(): Boolean {
     return this.localStorageService.retrieve('authenticationToken') != null;
   }
