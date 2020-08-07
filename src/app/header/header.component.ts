@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,22 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    // navigate to login component
-    console.log("called logout")
-    this.authService.logout();
+    if(window.confirm("Do you want to logout ?")) {
+      
+      this.authService.logout();
+      
+      setTimeout(() => {
+        this.router.navigateByUrl('/login');
+      }, 500);
+    }
   }
 
 }
