@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create-post', component: CreatePostComponent },
-  { path: 'posts/:id', component: PostDetailComponent }
+  { path: 'posts/:id', component: PostDetailComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
