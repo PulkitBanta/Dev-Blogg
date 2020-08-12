@@ -41,7 +41,7 @@ public class PostController {
 	@GetMapping("users/{username}")
 	public ResponseEntity<List<PostDto>> getUserPosts(@PathVariable String username) {
 		System.out.println(username);
-		return new ResponseEntity<>(postService.getPosts(), HttpStatus.OK);
+		return new ResponseEntity<>(postService.getUserPosts(username), HttpStatus.OK);
 	}
 	
 }
