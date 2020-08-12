@@ -32,6 +32,11 @@ public class PostService {
 		List<Post> posts = postRepository.findAll();
 		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
 	}
+	
+	public List<PostDto> getUserPosts(String username) {
+		List<Post> posts = postRepository.findByUsername(username);
+		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
+	}
 
 	private PostDto mapFromPostToDto(Post post) {
 		
