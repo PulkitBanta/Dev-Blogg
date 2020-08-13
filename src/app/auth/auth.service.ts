@@ -30,6 +30,8 @@ export class AuthService {
     return this.http.post(`${this.url}login`, loginRequest, {responseType: 'text'}).pipe(map( data => {
       this.localStorageService.store('authenticationToken', data)
       console.log(data)
+      this.localStorageService.clear('username');
+      this.localStorageService.store('username', loginRequest.username);
       return true;
     }))
   }
