@@ -13,4 +13,16 @@
             </div>
         </div>
     </div>
+    <div *ngIf='posts$.length === 0'>
+        <div class="row my-5">
+            <img src="../../assets/blog_post.svg" class="img-fluid col-md-6" alt="Responsive image">
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div>
+                    <h2 class="font-Charter mt-3 text-center">You have not written any post</h2>
+                    <p>How about writing one today ? 😃</p>
+                    <a class="btn btn-success text-center" routerLink="/create-post">Create Post</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
