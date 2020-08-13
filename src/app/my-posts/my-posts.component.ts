@@ -16,7 +16,7 @@ export class MyPostsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe(res => {
+    this.postService.getUserPosts().subscribe(res => {
       this.posts$ = res;
     }, error => console.log(error))
   }
