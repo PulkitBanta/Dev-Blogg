@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
+import { PostRequest } from '../create-post/PostRequest';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { PostService } from '../post.service';
 })
 export class HomeComponent implements OnInit {
 
-  posts$ = []
+  posts$: PostRequest[] = []
 
   constructor(
     private postService: PostService
