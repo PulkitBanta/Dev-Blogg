@@ -6,7 +6,7 @@
                     <h2 class="font-Charter card-title text-center">{{ post.title }}</h2>
                 </div>
                 <hr>
-                <div class="card-text m-md-5" [innerHTML]="post.content"></div>
+                <div class="card-text m-md-5" [innerHTML]="post.content | slice: 0:500"></div>
                 <div class="text-center">
                     <a routerLink="/posts/{{post.id}}">Read more ...</a>
                 </div>
