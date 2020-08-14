@@ -15,7 +15,7 @@ import com.pukitbanta.springblog.model.User;
 import com.pukitbanta.springblog.repository.UserRepository;
 
 @Service
-public class UserDetailServiceImpl implements UserDetailsService{
+public class UserDetailServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
