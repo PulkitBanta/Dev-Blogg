@@ -11,6 +11,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    <div class="my-5 text-center">
+        <img src="../../../assets/login.svg" class="img-fluid" alt="Responsive image">
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="my-5">
         <div class="form-group">
             <input type="username" class="form-control" placeholder="Enter username" id="username" formControlName='username' required autofocus>
