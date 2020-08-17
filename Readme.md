@@ -1,27 +1,91 @@
-# CRUDAPP
+<h1 align="center"><img src="screenshots/Showcase_logo.png"></h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+A full stack website where you can write *Dev Bloggs* and showcase them to the community. Every user is required to be signed up to write the *Dev Bloggs*.
 
-## Development server
+## Getting Started 🚀
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Code scaffolding
+You'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+node@v10.16.0 or higher
+npm@6.9.0 or higher
+git@2.17.1 or higher
+```
 
-## Build
+## How To Use 🔧
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+From your command line, clone and run DevBlogg:
 
-## Running unit tests
+```bash
+# Clone this repository
+$ git clone https://github.com/PulkitBanta/Dev-Blogg.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Running the Frontend development server
+```bash
 
-## Running end-to-end tests
+# Go into the repository
+$ cd Dev-Blogg
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# Install dependencies
+$ npm install
 
-## Further help
+#Start's development server
+$ npm start
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+
+* Running the Backend development server
+```bash
+
+# Go into the repository
+$ cd Dev-Blogg/backend
+
+# Install dependencies
+$ mvn install
+
+#Start's development server
+$ mvn spring-boot:run
+```
+
+
+## ScreenShots
+
+![Landing Page](screenshots/landing.jpg "Landing Page")
+![Login](screenshots/login.png "Login")
+![After Login](screenshots/landing_login.jpg "Access to Features after Login")
+![Platform](screenshots/platform.png "Platform")
+![Empty Cart](screenshots/session.png "Session")
+![Downloads](screenshots/downloads.png "Downloads")
+
+## Features
+
+- Material design.
+- Easy to post.
+- Responsive design.
+- Login and Signup feature.
+- View user written posts.
+
+## Built With
+
+- [Angular](https://angular.io) - One framework. Mobile & desktop.
+- [SpringBoot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can *"just run"*.
+- [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - A modern responsive front-end framework.
+- [Maven](https://maven.apache.org) - Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information. 
+
+## Contributing
+
+The project is open to all sort of contributions.
+
+## Contributors
+
+| [![Pulkit Banta](https://github.com/PulkitBanta.png?size=100)](https://github.com/PulkitBanta) |
+| --- |
+| [Pulkit Banta](https://github.com/PulkitBanta) |
+| <p align="center"><a title="code">💻</a> <a title="designing">🎨</a> <a title="documentation">📖</a></p>
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
