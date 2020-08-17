@@ -50,6 +50,7 @@ $ mvn install
 $ mvn spring-boot:run
 ```
 
+* **Note** - If you get error make sure you are running the backend development server and it is connected to MySql Server. 
 
 ## ScreenShots
 
@@ -73,7 +74,8 @@ $ mvn spring-boot:run
 - [Angular](https://angular.io) - One framework. Mobile & desktop.
 - [SpringBoot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can *"just run"*.
 - [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - A modern responsive front-end framework.
-- [Maven](https://maven.apache.org) - Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information. 
+- [Maven](https://maven.apache.org) - Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
+- [MySQL](https://www.mysql.com/) - MySQL is an open-source relational database management system.
 
 ## Contributing
 
