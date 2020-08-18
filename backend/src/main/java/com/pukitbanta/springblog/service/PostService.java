@@ -34,7 +34,7 @@ public class PostService {
 	}
 	
 	public List<PostDto> getUserPosts(String username) {
-		List<Post> posts = postRepository.findByUsername(username);
+		List<Post> posts = postRepository.findByUsernameOrderByCreatedOnDesc(username);
 		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
 	}
 

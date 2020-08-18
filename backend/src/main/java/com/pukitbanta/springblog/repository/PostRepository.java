@@ -10,6 +10,6 @@ public interface PostRepository extends JpaRepository<Post, Long>{
 	
 	List<Post> findAllByOrderByCreatedOnDesc();
 	
-	List<Post> findByUsername(String username);
+	List<Post> findByUsernameOrderByCreatedOnDesc(String username);
 
 }
