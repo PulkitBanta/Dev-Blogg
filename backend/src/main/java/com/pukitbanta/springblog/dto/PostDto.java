@@ -6,6 +6,8 @@ public class PostDto {
 	private String content;
 	private String title;
 	private String username;
+	private String createdOn;
+	private String updatedOn;
 
 	public Long getId() {
 		return id;
@@ -37,5 +39,21 @@ public class PostDto {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+	
+	public String getUpdatedOn() {
+		return updatedOn;
+	}
+	
+	public void setUpdatedOn(String updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 }
