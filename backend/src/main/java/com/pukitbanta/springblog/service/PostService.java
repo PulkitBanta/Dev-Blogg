@@ -29,7 +29,7 @@ public class PostService {
 	}
 	
 	public List<PostDto> getPosts() {
-		List<Post> posts = postRepository.findAll();
+		List<Post> posts = postRepository.findAllByOrderByCreatedOnDesc();
 		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
 	}
 	
@@ -46,6 +46,8 @@ public class PostService {
 		postDto.setTitle(post.getTitle());
 		postDto.setContent(post.getContent());
 		postDto.setUsername(post.getUsername());
+		postDto.setCreatedOn(post.getCreatedOn());
+		postDto.setUpdatedOn(post.getUpdatedOn());
 		
 		return postDto;
 	}

@@ -8,6 +8,8 @@ import com.pukitbanta.springblog.model.Post;
 
 public interface PostRepository extends JpaRepository<Post, Long>{
 	
+	List<Post> findAllByOrderByCreatedOnDesc();
+	
 	List<Post> findByUsername(String username);
 
 }
