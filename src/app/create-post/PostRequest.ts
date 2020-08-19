@@ -3,4 +3,6 @@ export interface PostRequest {
     content: String;
     title: String;
     username: String;
+    createdOn: String;
+    updatedOn: String;
 }

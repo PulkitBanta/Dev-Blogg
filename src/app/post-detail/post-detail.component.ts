@@ -22,10 +22,12 @@ export class PostDetailComponent implements OnInit {
     this.getPost();
 
     this.post$ = {
-      username: '',
-      title: '',
       id: '',
-      content: ''
+      title: '',
+      content: '',
+      username: '',
+      createdOn: '',
+      updatedOn: ''
     }
   }
 

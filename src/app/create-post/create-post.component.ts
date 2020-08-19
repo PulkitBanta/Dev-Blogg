@@ -36,7 +36,9 @@ export class CreatePostComponent implements OnInit {
       id: '',
       title: '',
       content: '',
-      username: ''
+      username: '',
+      createdOn: '',
+      updatedOn: ''
     }
   }
 
