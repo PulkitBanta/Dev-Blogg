@@ -71,10 +71,10 @@ $ mvn spring-boot:run
 
 ## Upcoming Features
 
-- Dark Mode.
-- Edit Post.
-- Delete Post.
-- Post Tags.
+- [ ] Dark Mode.
+- [ ] Edit Post.
+- [ ] Delete Post.
+- [ ] Post Tags.
 
 ## Built With
 
