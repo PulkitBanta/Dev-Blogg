@@ -4,9 +4,12 @@
             <div class="card-body">
                 <div class="mx-md-5">
                     <h2 class="font-Charter card-title text-center">{{ post.title }}</h2>
+                    <div class="text-right">
+                        <small>Created On: {{ post.createdOn | date }}</small>
+                    </div>
                 </div>
                 <hr>
-                <div class="card-text m-md-5" [innerHTML]="post.content | slice: 0:500"></div>
+                <div class="card-text m-md-5" innerHTML="{{ post.content.length > 500 ? (post.content | slice: 0:500) + ' ...' : post.content }}"></div>
                 <div class="text-center">
                     <a routerLink="/posts/{{post.id}}">Read more ...</a>
                 </div>
