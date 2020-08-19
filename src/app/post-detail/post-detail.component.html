@@ -3,7 +3,10 @@
         <div class="card-body">
             <div class="mx-md-5">
                 <h2 class="font-Charter card-title text-center">{{ post$.title }}</h2>
-                <h6 class="card-subtitle mb-2 text-muted text-right">Posted By: {{ post$.username }}</h6>
+                <div class="row mb-2">
+                    <h6 class="col-sm-6 card-subtitle text-left">Written By: {{ post$.username }}</h6>
+                    <small class="col-sm-6 card-subtitle text-right">Created On: {{ post$.createdOn | date }}</small>
+                </div>
             </div>
             <hr>
             <div class="card-text m-md-5" [innerHTML]="post$.content"></div>
