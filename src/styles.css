@@ -20,7 +20,7 @@
 .light {
     --background-color: #ebebeb;
     --text: rgb(27, 27, 27);
-    --subtext: rgb(128, 128, 128);
+    --subtext: rgb(109, 109, 109);
     --footer-text: rgb(94, 94, 94);
     --footer-shadow: #cfd3d4;
     --url: url('./assets/chevron-down-gray.svg')
@@ -58,12 +58,12 @@ p, h1, h2, h3, h4, h5, h6, small {
     font-weight: 600;
 }
 
-.cursor-pointer {
-    cursor: pointer;
+.nav-link:hover {
+    color: var(--text) !important;
 }
 
-.nav-link:hover {
-    color: var(--text);
+.cursor-pointer {
+    cursor: pointer;
 }
 
 .navbar-toggler {
@@ -105,9 +105,9 @@ footer {
 }
 
 .github-ic:hover {
-    color: rgb(102, 101, 101);
+    color: var(--text);
 }
 
 .icon {
-    color: var(--footer-text);
+    color: var(--subtext);
 }
