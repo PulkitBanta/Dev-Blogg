@@ -64,6 +64,15 @@ p, h1, h2, h3, h4, h5, h6, small {
     color: var(--text);
 }
 
+.navbar-toggler {
+    background-color: transparent !important;
+    border: 1px solid var(--footer-shadow) !important;
+}
+
+.navbar-toggler-icon {
+    color: var(--footer-shadow) !important;
+}
+
 /* cards css */
 
 .card {
@@ -73,7 +82,7 @@ p, h1, h2, h3, h4, h5, h6, small {
 }
 
 hr {
-    background-color: white !important;
+    background-color: var(--text) !important;
 }
 
 /* footer css */
