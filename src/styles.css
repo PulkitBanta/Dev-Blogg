@@ -53,6 +53,11 @@ p, h1, h2, h3, h4, h5, h6, small {
 
 .nav-link {
     color: var(--subtext) !important;
+    font-weight: 600;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 .nav-link:hover {
