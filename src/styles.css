@@ -16,8 +16,7 @@
 }
 
 
-/* create custom css for text, body and other elements in the HTML */
-/* Remove bootstrap css colors */
+/* custom css classes for different Themes */
 .light {
     --background-color: #ebebeb;
     --text: rgb(27, 27, 27);
@@ -32,6 +31,7 @@
     --subtext: rgb(190, 190, 190);
     --footer-text: rgb(197, 197, 197);
     --footer-shadow: teal;
+    --card-bg: #303030;
 }
 
 body {
@@ -52,11 +52,22 @@ p, h1, h2, h3, h4, h5, h6, small {
 }
 
 .nav-link {
-    color: var(--subtext);
+    color: var(--subtext) !important;
 }
 
 .nav-link:hover {
     color: var(--text);
+}
+
+/* cards css */
+
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+}
+
+hr {
+    background-color: white !important;
 }
 
 /* footer css */
