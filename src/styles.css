@@ -23,6 +23,7 @@
     --subtext: rgb(128, 128, 128);
     --footer-text: rgb(94, 94, 94);
     --footer-shadow: #cfd3d4;
+    --url: url('./assets/chevron-down-gray.svg')
 }
 
 .dark {
@@ -32,6 +33,7 @@
     --footer-text: rgb(197, 197, 197);
     --footer-shadow: teal;
     --card-bg: #303030;
+    --url: url('./assets/chevron-down-teal.svg')
 }
 
 body {
@@ -66,11 +68,10 @@ p, h1, h2, h3, h4, h5, h6, small {
 
 .navbar-toggler {
     background-color: transparent !important;
-    border: 1px solid var(--footer-shadow) !important;
 }
 
 .navbar-toggler-icon {
-    color: var(--footer-shadow) !important;
+    background-image: var(--url) !important ;
 }
 
 /* cards css */
@@ -82,7 +83,7 @@ p, h1, h2, h3, h4, h5, h6, small {
 }
 
 hr {
-    background-color: var(--text) !important;
+    background-color: var(--footer-shadow) !important;
 }
 
 /* footer css */
