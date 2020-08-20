@@ -22,7 +22,7 @@
     --text: rgb(27, 27, 27);
     --subtext: rgb(109, 109, 109);
     --footer-text: rgb(94, 94, 94);
-    --footer-shadow: #cfd3d4;
+    --footer-shadow: rgba(0, 0, 0, 0.18);
     --url: url('./assets/chevron-down-gray.svg')
 }
 
@@ -74,6 +74,10 @@ p, h1, h2, h3, h4, h5, h6, small {
     background-image: var(--url) !important ;
 }
 
+svg {
+    fill: var(--subtext);
+}
+
 /* cards css */
 
 .card {
@@ -89,7 +93,7 @@ hr {
 /* footer css */
 footer {
     background-color: var(--background-color);
-    box-shadow: 0 -1px 10px 5px var(--footer-shadow);
+    box-shadow: 0 0px 20px 5px var(--footer-shadow);
 }
 
 .footer-text {
