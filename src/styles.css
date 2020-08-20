@@ -69,6 +69,7 @@ p, h1, h2, h3, h4, h5, h6, small {
 .card {
     background-color: var(--card-bg) !important;
     color: var(--text) !important;
+    border: none !important;
 }
 
 hr {
