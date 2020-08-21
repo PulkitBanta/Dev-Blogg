@@ -14,3 +14,104 @@
 .font-Charter {
     font-family: Charter;
 }
+
+
+/* custom css classes for different Themes */
+.light {
+    --background-color: #ebebeb;
+    --text: rgb(27, 27, 27);
+    --subtext: rgb(109, 109, 109);
+    --footer-text: rgb(94, 94, 94);
+    --footer-shadow: rgba(0, 0, 0, 0.18);
+    --url: url('./assets/chevron-down-gray.svg')
+}
+
+.dark {
+    --background-color: #2a2a2b;
+    --text: rgb(240, 240, 240);
+    --subtext: rgb(190, 190, 190);
+    --footer-text: rgb(197, 197, 197);
+    --footer-shadow: teal;
+    --card-bg: #303030;
+    --url: url('./assets/chevron-down-teal.svg')
+}
+
+body {
+    background-color: var(--background-color) !important;
+}
+
+p, h1, h2, h3, h4, h5, h6, small {
+    color: var(--text);
+}
+
+/* header css */
+.navbar-brand {
+    color: var(--text);
+}
+
+.navbar-brand:hover {
+    color: var(--text);
+}
+
+.nav-link {
+    color: var(--subtext) !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--text) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.navbar-toggler {
+    background-color: transparent !important;
+}
+
+.navbar-toggler-icon {
+    background-image: var(--url) !important ;
+}
+
+svg {
+    fill: var(--subtext);
+}
+
+/* cards css */
+
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    border: none !important;
+}
+
+hr {
+    background-color: var(--footer-shadow) !important;
+}
+
+/* footer css */
+footer {
+    background-color: var(--background-color);
+    box-shadow: 0 0px 20px 5px var(--footer-shadow);
+}
+
+.footer-text {
+    color: var(--footer-text);
+}
+
+.tw-ic:hover {
+    color: #00acee;
+}
+
+.li-ic:hover {
+    color: #0e76a8;
+}
+
+.github-ic:hover {
+    color: var(--text);
+}
+
+.icon {
+    color: var(--subtext);
+}

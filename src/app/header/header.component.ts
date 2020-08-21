@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -11,10 +11,12 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private renderer2: Renderer2
   ) { }
 
   ngOnInit(): void {
+    this.changeTheme(true);
   }
 
   logout() {
@@ -25,6 +27,16 @@ export class HeaderComponent implements OnInit {
       setTimeout(() => {
         this.router.navigateByUrl('/login');
       }, 500);
+    }
+  }
+
+  changeTheme(val: boolean): void {
+    if(val) {
+      this.renderer2.addClass(document.body, 'light');
+      this.renderer2.removeClass(document.body, 'dark');
+    } else {
+      this.renderer2.addClass(document.body, 'dark');
+      this.renderer2.removeClass(document.body, 'light');
     }
   }
 
