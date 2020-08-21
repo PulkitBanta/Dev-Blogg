@@ -37,6 +37,15 @@ public class PostService {
 		List<Post> posts = postRepository.findByUsernameOrderByCreatedOnDesc(username);
 		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
 	}
+	
+	public String deletePost(Long id) {
+		if(postRepository.existsById(id)) {
+			postRepository.deleteById(id);
+			return "Post Successfully Deleted";
+		}
+		
+		return "Post Not Found";
+	}
 
 	private PostDto mapFromPostToDto(Post post) {
 		
