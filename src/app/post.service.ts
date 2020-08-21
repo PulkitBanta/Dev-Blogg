@@ -36,4 +36,9 @@ export class PostService {
   getPost(id: number): Observable<PostRequest> {
     return this.http.get<PostRequest>(`${this.url}/${id}`);
   }
+
+  deletePost(id: number): Observable<string> {
+    console.log("called")
+    return this.http.delete<string>(`${this.url}/${id}`);
+  }
 }
