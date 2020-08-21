@@ -10,8 +10,13 @@
                 </div>
                 <hr>
                 <div class="card-text m-md-5" innerHTML="{{ post.content.length > 500 ? (post.content | slice: 0:500) + ' ...' : post.content }}"></div>
-                <div class="text-center">
-                    <a routerLink="/posts/{{post.id}}">Read more ...</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-danger" (click)="deletePost(post.id)">Delete Post</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a routerLink='/posts/{{post.id}}'>Read more ...</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,5 +34,3 @@
         </div>
     </div>
 </div>
-
-<!-- add edit, delete post button -->

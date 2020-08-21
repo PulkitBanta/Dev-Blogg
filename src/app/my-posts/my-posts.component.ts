@@ -21,4 +21,13 @@ export class MyPostsComponent implements OnInit {
     }, error => console.log(error))
   }
 
+  deletePost(id: number) {
+    this.postService.deletePost(id).subscribe(res => {
+      console.log(res);
+      console.log("method called")
+    }, error => {
+      console.log(error);
+    })
+  }
+
 }
