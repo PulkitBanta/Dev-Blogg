@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { PostRequest } from '../create-post/PostRequest';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class MyPostsComponent implements OnInit {
 
   posts$: PostRequest[] = []
+  faTrash = faTrash;
 
   constructor(
     private postService: PostService,
