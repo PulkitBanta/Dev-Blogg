@@ -6,6 +6,8 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,15 @@ public class PostService {
 	public List<PostDto> getUserPosts(String username) {
 		List<Post> posts = postRepository.findByUsernameOrderByCreatedOnDesc(username);
 		return posts.stream().map(this::mapFromPostToDto).collect(Collectors.toList());
+	}
+	
+	public ResponseEntity<String> deletePost(Long id) {
+		if(postRepository.existsById(id)) {
+			postRepository.deleteById(id);
+			return new ResponseEntity<String>("Post Successfully Deleted", HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<String>("Post Not Found", HttpStatus.OK);
 	}
 
 	private PostDto mapFromPostToDto(Post post) {
