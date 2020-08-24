@@ -1,4 +1,4 @@
-<h1 align="center"><img src="screenshots/Showcase_logo.png"></h1>
+<h1 align="center"><img src="screenshots/logo.png"></h1>
 
 A full-stack website where you can write *Dev Bloggs* and showcase them to the community. Every user is required to be signed up to write the *Dev Bloggs*. The simple UI of the web app makes it more attractive as well as user friendly.
 
@@ -54,12 +54,12 @@ $ mvn spring-boot:run
 
 ## ScreenShots
 
-![Home Page](screenshots/no_post_home.png "Home Page")
+![Home Page](screenshots/home.png "Home Page")
+![Create Post](screenshots/create_post.png "Create Post")
+![My Posts](screenshots/my_posts.png "My Posts")
+![Read Post](screenshots/read_post.png "Read Post")
 ![Login](screenshots/login.png "Login")
 ![Signup](screenshots/signup.png "Signup")
-![Posts](screenshots/home_page_posts.png "Posts")
-![Create Post](screenshots/create_post.png "Create Post")
-![Full Post](screenshots/full_post.png "Full Post")
 
 ## Features
 
@@ -71,16 +71,11 @@ $ mvn spring-boot:run
 
 ## Upcoming Features
 
-- [ ] Dark Mode.
+- [x] Dark Mode.
+- [x] Delete Post.
 - [ ] Reading Mode.
-- [ ] Delete Post.
 - [ ] Post Tags.
 - [ ] Edit Post.
-
-## Features in development
-
-- [ ] Dark Mode.
-- [ ] Delete Post.
 
 ## Built With
 
