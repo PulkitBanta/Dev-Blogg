@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="606.209" height="282.651" viewBox="0 0 606.209 282.651">
+<svg xmlns="http://www.w3.org/2000/svg" width="606.217" height="282.651" viewBox="0 0 606.217 282.651">
   <g id="signup" transform="translate(0 -81.971)">
+    <ellipse id="shadow" cx="302.113" cy="11.837" rx="302.113" ry="11.837" transform="translate(0 340.948)" fill="rgba(0,0,0,0.4)"/>
     <g id="trees">
-      <path id="Path_8" data-name="Path 8" d="M104.3,532.145l35.753-51.37-35.771,56.957-.021,5.845q-3.824-.032-7.572-.249c-.011-1.327,3.027-74.344,2.9-75.665.176-.05.275-6.906.345-7.206L62.578,404.322l37.391,50.823.111,1.5,2.218-56.73L70.191,341.824l32.361,48.126c.012-.772,1.532-117.251,1.547-117.97.009.382.707,92.694.712,93.083l30.707-37.157-30.736,45.141-.157,50.773,28.5-49.1c-35.562,71.6-27.692,46.546-28.6,84.795l41.392-68.365-41.427,78.214Z" transform="translate(-62.389 -190.009)" fill="#643030"/>
-      <path id="Path_9" data-name="Path 9" d="M1093.533,662l14.9-21.407-14.907,23.736-.009,2.436q-1.594-.013-3.155-.1c0-.553,1.261-30.981,1.208-31.532.073-.021.115-2.878.144-3L1076.15,608.73l15.582,21.179.047.626.924-23.641-13.38-24.209,13.486,20.055c.005-.322.638-48.861.644-49.161,0,.159.295,38.628.3,38.79l12.8-15.484-12.81,18.811-.065,21.158,11.875-20.46c-14.82,29.838-11.54,19.4-11.919,35.336l17.249-28.49-17.264,32.594Z" transform="translate(-504.666 -312.887)" fill="#643030"/>
+      <path id="Path_9" data-name="Path 9" d="M1093.53,662l14.9-21.407-14.907,23.736-.009,2.436q-1.594-.013-3.155-.1c0-.553,1.261-30.981,1.208-31.532.073-.021.115-2.878.144-3l-15.561-23.4,15.582,21.179.047.626.924-23.641-13.38-24.209,13.486,20.055c.005-.322.638-48.861.644-49.161,0,.159.3,38.628.3,38.79l12.8-15.484-12.81,18.811-.065,21.158,11.875-20.46c-14.82,29.838-11.54,19.4-11.919,35.336l17.249-28.49-17.264,32.594Z" transform="translate(-504.666 -312.887)" fill="#643030"/>
+      <path id="Path_8" data-name="Path 8" d="M104.3,532.145l35.753-51.37-35.771,56.957-.021,5.845q-3.824-.032-7.572-.249c-.011-1.327,3.027-74.344,2.9-75.665.176-.05.275-6.906.345-7.206L62.578,404.322l37.391,50.823.111,1.5,2.218-56.73L70.191,341.824l32.361,48.126c.012-.772,1.532-117.251,1.547-117.97.009.382.707,92.694.712,93.083l30.707-37.157-30.736,45.141-.157,50.773,28.5-49.1c-35.562,71.6-27.692,46.546-28.6,84.8l41.392-68.365L104.49,469.364Z" transform="translate(-62.389 -190.009)" fill="#643030"/>
     </g>
-    <ellipse id="shadow" cx="302.113" cy="11.837" rx="302.113" ry="11.837" transform="translate(0 340.948)" fill="rgba(204,173,173,0.54)" style="mix-blend-mode: darken;isolation: isolate"/>
     <g id="box" transform="translate(1 10)">
       <rect id="box-2" data-name="box" width="344.95" height="205.657" transform="translate(129.71 137.801)" fill="#fccbcb"/>
       <g id="box-circles">
@@ -12,12 +12,12 @@
         <path id="middle" d="M556.78,730.59H523.972a17.478,17.478,0,0,1,32.808,0Z" transform="translate(-237.72 -387.132)" fill="#ac4b4b"/>
         <path id="left" d="M331.612,374.581a82.492,82.492,0,0,1-82.472,81.148c-.969,0-1.933-.017-2.9-.051v-81.1Z" transform="translate(-116.531 -236.78)" fill="#ac4b4b"/>
       </g>
-      <g id="input_fields" data-name="input fields" transform="translate(-1 -2)">
-        <path id="button" d="M10.163,0h63.1a10.163,10.163,0,0,1,0,20.326h-63.1A10.163,10.163,0,0,1,10.163,0Z" transform="translate(184.032 292.641)" fill="#c36767"/>
-        <rect id="small-field-right" width="112.422" height="20.326" rx="10.163" transform="translate(310.032 252.641)" fill="#e1a9a9"/>
-        <rect id="small-field-left" width="118.422" height="20.326" rx="10.163" transform="translate(184.032 252.641)" fill="#e1a9a9"/>
-        <rect id="middle-input-field" width="237.938" height="20.326" rx="10.163" transform="translate(184.516 212.586)" fill="#e1a9a9"/>
-        <rect id="top-input-field" width="237.938" height="20.326" rx="10.163" transform="translate(184.516 172.532)" fill="#e1a9a9"/>
+      <g id="input_fields" data-name="input fields" transform="translate(-1 14)">
+        <path id="button" d="M10.163,0h63.1a10.163,10.163,0,1,1,0,20.326h-63.1A10.163,10.163,0,1,1,10.163,0Z" transform="translate(184.032 276.641)" fill="#c36767"/>
+        <rect id="small-field-right" width="112.422" height="20.326" rx="10.163" stroke-width="1" fill="#e1a9a9" stroke="rgba(195,103,103,0.3)" transform="translate(310.032 244.641)"/>
+        <rect id="small-field-left" width="118.422" height="20.326" rx="10.163" stroke-width="1" fill="#e1a9a9" stroke="rgba(195,103,103,0.3)" transform="translate(184.032 244.641)"/>
+        <rect id="middle-input-field" width="237.938" height="20.326" rx="10.163" stroke-width="1" fill="#e1a9a9" stroke="rgba(195,103,103,0.3)" transform="translate(184.516 212.586)"/>
+        <rect id="top-input-field" width="237.938" height="20.326" rx="10.163" stroke-width="1" fill="#e1a9a9" stroke="rgba(195,103,103,0.3)" transform="translate(184.516 180.532)"/>
       </g>
     </g>
   </g>
