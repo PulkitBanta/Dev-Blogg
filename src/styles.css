@@ -115,3 +115,9 @@ footer {
 .icon {
     color: var(--subtext);
 }
+
+/* Extra elements */
+
+label {
+    color: var(--text);
+}
