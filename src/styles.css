@@ -90,6 +90,10 @@ hr {
     background-color: var(--footer-shadow) !important;
 }
 
+code {
+    color: #e858ad !important;
+}
+
 /* footer css */
 footer {
     background-color: var(--background-color);
