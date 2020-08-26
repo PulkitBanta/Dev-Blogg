@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  logoUrl="../../assets/logo.svg"
+
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -34,9 +36,11 @@ export class HeaderComponent implements OnInit {
     if(val) {
       this.renderer2.addClass(document.body, 'light');
       this.renderer2.removeClass(document.body, 'dark');
+      this.logoUrl = "../../assets/logo.svg";
     } else {
       this.renderer2.addClass(document.body, 'dark');
       this.renderer2.removeClass(document.body, 'light');
+      this.logoUrl = "../../assets/light_logo.svg";
     }
   }
 
