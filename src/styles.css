@@ -36,6 +36,15 @@
     --url: url('./assets/chevron-down-teal.svg')
 }
 
+.reading {
+    --background-color: #f4ecd8;
+    --text: #5b4636;
+    --subtext: rgb(109, 109, 109);
+    --footer-text: #3b3b3c;
+    --footer-shadow: rgba(0, 0, 0, 0.25);
+    --url: url('./assets/chevron-down-gray.svg')
+}
+
 body {
     background-color: var(--background-color) !important;
 }
