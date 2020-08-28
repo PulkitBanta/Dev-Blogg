@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.changeTheme(true);
+    this.changeTheme('light');
   }
 
   logout() {
@@ -32,15 +32,22 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  changeTheme(val: boolean): void {
-    if(val) {
+  changeTheme(val: string): void {
+    if(val === 'light') {
       this.renderer2.addClass(document.body, 'light');
       this.renderer2.removeClass(document.body, 'dark');
+      this.renderer2.removeClass(document.body, 'reading');
       this.logoUrl = "../../assets/logo.svg";
-    } else {
+    } else if (val === 'dark') {
       this.renderer2.addClass(document.body, 'dark');
       this.renderer2.removeClass(document.body, 'light');
+      this.renderer2.removeClass(document.body, 'reading');
       this.logoUrl = "../../assets/light_logo.svg";
+    } else {
+      this.renderer2.addClass(document.body, 'reading');
+      this.renderer2.removeClass(document.body, 'dark');
+      this.renderer2.removeClass(document.body, 'light');
+      this.logoUrl = "../../assets/logo.svg";
     }
   }
 
