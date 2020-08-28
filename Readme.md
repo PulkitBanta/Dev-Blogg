@@ -1,6 +1,6 @@
 <h1 align="center"><img src="screenshots/logo.png"></h1>
 
-A full-stack website where you can write *Dev Bloggs* and showcase them to the community. Every user is required to be signed up to write the *Dev Bloggs*. The simple UI of the web app makes it more attractive as well as user friendly.
+A full-stack website where you can write *Dev Bloggs* and showcase them to the community. Every user is required to be *logged in* to write the *Dev Bloggs*. The simple UI of the web app makes it more attractive as well as user friendly.
 
 ## Getting Started 🚀
 
@@ -63,25 +63,26 @@ $ mvn spring-boot:run
 
 ## Features
 
+- Create posts.
+- Multiple themes.
 - Material design.
-- Easy to post.
 - Responsive design.
 - Login and Signup feature.
-- View user written posts.
+- Read posts by other users.
 
 ## Upcoming Features
 
 - [x] Dark Mode.
 - [x] Delete Post.
-- [ ] Reading Mode.
+- [x] Reading Mode.
 - [ ] Post Tags.
 - [ ] Edit Post.
 
 ## Built With
 
 - [Angular](https://angular.io) - One framework. Mobile & desktop.
-- [SpringBoot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can *"just run"*.
 - [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - A modern responsive front-end framework.
+- [SpringBoot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can *"just run"*.
 - [Maven](https://maven.apache.org) - Apache Maven is a software project management and comprehension tool.
 - [MySQL](https://www.mysql.com/) - MySQL is an open-source relational database management system.
 
