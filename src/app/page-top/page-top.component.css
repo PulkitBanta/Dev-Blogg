@@ -1,0 +1,6 @@
+img {
+    transform: rotate(180deg);
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+}

@@ -18,6 +18,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { PageTopComponent } from './page-top/page-top.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MyPostsComponent } from './my-posts/my-posts.component';
     CreatePostComponent,
     PostDetailComponent,
     PageNotFoundComponent,
-    MyPostsComponent
+    MyPostsComponent,
+    PageTopComponent
   ],
   imports: [
     BrowserModule,
