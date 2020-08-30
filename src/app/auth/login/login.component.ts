@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginRequest } from '../LoginRequest';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { FormValidationService } from '../form-validation.service';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
-    private fvService: FormValidationService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
