@@ -25,7 +25,7 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
-	public void createPost(PostDto postDto) {
+	public void createOrUpdatePost(PostDto postDto) {
 		Post post = mapFromDtoToPost(postDto);
 		postRepository.save(post);
 	}
