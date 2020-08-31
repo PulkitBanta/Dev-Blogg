@@ -19,6 +19,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { PageTopComponent } from './page-top/page-top.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PageTopComponent } from './page-top/page-top.component';
     PostDetailComponent,
     PageNotFoundComponent,
     MyPostsComponent,
-    PageTopComponent
+    PageTopComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

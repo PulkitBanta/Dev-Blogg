@@ -36,4 +36,8 @@ export class MyPostsComponent implements OnInit {
     })
   }
 
+  editPost(id: number) {
+    this.router.navigateByUrl(`/edit-post/${id}`)
+  }
+
 }

@@ -1,28 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
-import { EditorConfig } from './editor-config';
-import { PostRequest } from './PostRequest';
 import { PostService } from '../post.service';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router';
+import { PostRequest } from '../create-post/PostRequest';
+import { EditorConfig } from '../create-post/editor-config';
 
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css']
+  selector: 'app-edit-post',
+  templateUrl: './edit-post.component.html',
+  styleUrls: ['./edit-post.component.css']
 })
-export class CreatePostComponent implements OnInit {
+export class EditPostComponent implements OnInit {
 
   postForm: FormGroup
   post: Boolean = true
   error: Boolean = true;
 
+  postId: number;
+
   config = EditorConfig
+
+  editorData: string
+  postTitle: string
 
   private postRequest: PostRequest
 
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -41,10 +47,17 @@ export class CreatePostComponent implements OnInit {
       updatedOn: ''
     }
 
+    this.postId = +this.route.snapshot.paramMap.get('id')
+
+    this.getPostContent(this.postId);
+  }
+
+  getPostContent(id: number) {
     // method to edit the content of the post
-    // this.postService.getPost(36).subscribe(res => {
-    //   this.editorData = res.content;
-    // })
+    this.postService.getPost(id).subscribe(res => {
+      this.editorData = res.content;
+      this.postTitle = res.title;
+    })
   }
 
   onSubmit() {
