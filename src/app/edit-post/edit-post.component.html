@@ -11,10 +11,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="my-5">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="my-5">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="title" class="form-control" placeholder="Title goes here ..." id="title" formControlName="title" [value]="postTitle" autofocus>
+            <input type="title" class="form-control" placeholder="Title goes here ..." id="title" formControlName="title" [(ngModel)]='postTitle' autofocus>
         </div>
         <div class="form-group">
             <label for="body">Body</label>

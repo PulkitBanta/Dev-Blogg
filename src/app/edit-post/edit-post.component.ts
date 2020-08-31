@@ -12,7 +12,7 @@ import { EditorConfig } from '../create-post/editor-config';
 })
 export class EditPostComponent implements OnInit {
 
-  postForm: FormGroup
+  updateForm: FormGroup
   post: Boolean = true
   error: Boolean = true;
 
@@ -33,7 +33,7 @@ export class EditPostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.postForm = this.fb.group({
+    this.updateForm = this.fb.group({
       title: '',
       body: ''
     })
@@ -48,28 +48,29 @@ export class EditPostComponent implements OnInit {
     }
 
     this.postId = +this.route.snapshot.paramMap.get('id')
-
     this.getPostContent(this.postId);
   }
 
   getPostContent(id: number) {
-    // method to edit the content of the post
     this.postService.getPost(id).subscribe(res => {
       this.editorData = res.content;
       this.postTitle = res.title;
+      this.postRequest.id += id;
     })
   }
 
   onSubmit() {
-    this.postRequest.title = this.postForm.get('title').value;
-    this.postRequest.content = this.postForm.get('body').value;
+    this.postRequest.title = this.postTitle;
+    this.postRequest.content = this.updateForm.get('body').value;
+
+    console.log(this.postRequest)
 
     if(this.postRequest.title != null && this.postRequest.content != null) {
       this.postService.addPost(this.postRequest).subscribe( data => {
         console.log(data);
         this.postSuccessful();
         setTimeout(() => {
-          this.router.navigateByUrl('/home')
+          this.router.navigateByUrl('/my-posts')
         }, 500)
       },
       error => {
