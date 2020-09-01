@@ -63,20 +63,19 @@ $ mvn spring-boot:run
 
 ## Features
 
-- Create posts.
 - Multiple themes.
 - Material design.
 - Responsive design.
 - Login and Signup feature.
-- Read posts by other users.
+- CRUD operations on Posts.
 
 ## Upcoming Features
 
 - [x] Dark Mode.
 - [x] Delete Post.
 - [x] Reading Mode.
+- [x] Edit Post.
 - [ ] Post Tags.
-- [ ] Edit Post.
 
 ## Built With
 
