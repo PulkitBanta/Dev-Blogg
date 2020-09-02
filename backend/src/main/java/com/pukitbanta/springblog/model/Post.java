@@ -37,6 +37,10 @@ public class Post {
 	@Column
 	private String username;
 
+	@NotBlank
+	@Column
+	private String tag;
+	
 	public Long getId() {
 		return id;
 	}
@@ -83,5 +87,13 @@ public class Post {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 }
