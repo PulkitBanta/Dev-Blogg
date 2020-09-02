@@ -54,6 +54,7 @@ public class PostService {
 		PostDto postDto = new PostDto();
 		
 		postDto.setId(post.getId());
+		postDto.setTag(post.getTag());
 		postDto.setTitle(post.getTitle());
 		postDto.setContent(post.getContent());
 		postDto.setUsername(post.getUsername());
@@ -67,6 +68,7 @@ public class PostService {
 		Post post = new Post();
 		post.setTitle(postDto.getTitle());
 		post.setId(postDto.getId());
+		post.setTag(postDto.getTag());
 		post.setContent(postDto.getContent());
 		User username = authService.getCurrentUser().orElseThrow(()-> new IllegalArgumentException("No user logged in"));
 		post.setUsername(username.getUsername());
