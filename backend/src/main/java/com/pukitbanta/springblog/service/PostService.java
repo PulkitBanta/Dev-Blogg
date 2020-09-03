@@ -48,6 +48,11 @@ public class PostService {
 		
 		return new ResponseEntity<String>("Post Not Found", HttpStatus.OK);
 	}
+	
+	public List<PostDto> getPostsByTag(String tag) {
+		List<Post> posts = postRepository.findByTagOrderByCreatedOnDesc(tag);
+		return posts.parallelStream().map(this::mapFromPostToDto).collect(Collectors.toList());
+	}
 
 	private PostDto mapFromPostToDto(Post post) {
 		

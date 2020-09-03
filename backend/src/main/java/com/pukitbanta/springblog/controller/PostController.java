@@ -49,4 +49,9 @@ public class PostController {
 		return postService.deletePost(id);
 	}
 	
+	@GetMapping("tags/{tagName}")
+	public ResponseEntity<List<PostDto>> getPostsByTags(@PathVariable String tagName) {
+		return new ResponseEntity<>(postService.getPostsByTag(tagName), HttpStatus.OK);
+	}
+	
 }
