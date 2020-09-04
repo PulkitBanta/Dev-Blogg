@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { PostService } from '../post.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PostRequest } from '../create-post/PostRequest';
 import { EditorConfig } from '../create-post/editor-config';
+import { PostRequest } from '../PostRequest';
 
 @Component({
   selector: 'app-edit-post',
@@ -16,14 +16,9 @@ export class EditPostComponent implements OnInit {
   post: Boolean = true
   error: Boolean = true;
 
-  postId: number;
-
   config = EditorConfig
 
-  editorData: string
-  postTitle: string
-
-  private postRequest: PostRequest
+  updatedRequest: PostRequest
 
   constructor(
     private fb: FormBuilder,
@@ -35,11 +30,13 @@ export class EditPostComponent implements OnInit {
   ngOnInit(): void {
     this.updateForm = this.fb.group({
       title: '',
-      body: ''
+      body: '',
+      tag: ''
     })
 
-    this.postRequest = {
+    this.updatedRequest = {
       id: '',
+      tag: '',
       title: '',
       content: '',
       username: '',
@@ -47,36 +44,41 @@ export class EditPostComponent implements OnInit {
       updatedOn: ''
     }
 
-    this.postId = +this.route.snapshot.paramMap.get('id')
-    this.getPostContent(this.postId);
+    var postId: number = +this.route.snapshot.paramMap.get('id')
+    this.getPostContent(postId);
   }
 
   getPostContent(id: number) {
     this.postService.getPost(id).subscribe(res => {
-      this.editorData = res.content;
-      this.postTitle = res.title;
-      this.postRequest.id += id;
+      this.updatedRequest = res;
     })
   }
 
   onSubmit() {
-    this.postRequest.title = this.postTitle;
-    this.postRequest.content = this.updateForm.get('body').value;
+    if (this.updateForm.get('title').dirty)
+      this.updatedRequest.title = this.updateForm.get('title').value;
 
-    console.log(this.postRequest)
+    if (this.updateForm.get('body').dirty)
+      this.updatedRequest.content = this.updateForm.get('body').value;
 
-    if(this.postRequest.title != null && this.postRequest.content != null) {
-      this.postService.addPost(this.postRequest).subscribe( data => {
+    if (this.updateForm.get('tag').dirty)
+      this.updatedRequest.tag = this.updateForm.get('tag').value;
+
+    console.log(this.updateForm.get('body').value)
+    console.log(this.updatedRequest)
+
+    if (this.updatedRequest.title != null && this.updatedRequest.content != null) {
+      this.postService.addPost(this.updatedRequest).subscribe(data => {
         console.log(data);
         this.postSuccessful();
         setTimeout(() => {
           this.router.navigateByUrl('/my-posts')
         }, 500)
       },
-      error => {
-        this.postUnsuccessful();
-        console.log(error);
-      });
+        error => {
+          this.postUnsuccessful();
+          console.log(error);
+        });
     } else {
       this.postUnsuccessful();
     }
