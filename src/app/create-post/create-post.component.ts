@@ -46,7 +46,10 @@ export class CreatePostComponent implements OnInit {
 
   onSubmit() {
     this.postRequest.title = this.postForm.get('title').value;
+    this.postRequest.tag = this.postForm.get('tag').value;
     this.postRequest.content = this.postForm.get('body').value;
+
+    console.log(this.postRequest)
 
     if(this.postRequest.title != null && this.postRequest.content != null) {
       this.postService.addPost(this.postRequest).subscribe( data => {

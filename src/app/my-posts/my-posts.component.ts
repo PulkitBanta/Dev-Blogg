@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-import { PostRequest } from '../create-post/PostRequest';
+import { PostRequest } from '../PostRequest';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Router } from '@angular/router';
 
@@ -26,14 +26,16 @@ export class MyPostsComponent implements OnInit {
   }
 
   deletePost(id: number) {
-    this.postService.deletePost(id).subscribe(res => {
-      console.log(res)
-      setTimeout(() => {
-        this.router.navigateByUrl("/home")
-      }, 500);
-    }, error => {
-      console.log(error);
-    })
+    if(window.confirm("Are you sure, you want to delete this post?")) {
+      this.postService.deletePost(id).subscribe(res => {
+        console.log(res)
+        setTimeout(() => {
+          this.router.navigateByUrl("/home")
+        }, 500);
+      }, error => {
+        console.log(error);
+      })
+    }
   }
 
   editPost(id: number) {
