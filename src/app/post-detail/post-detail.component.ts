@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { PostRequest } from '../create-post/PostRequest';
+import { PostRequest } from '../PostRequest';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,6 +22,7 @@ export class PostDetailComponent implements OnInit {
 
     this.post$ = {
       id: '',
+      tag: '',
       title: '',
       content: '',
       username: '',

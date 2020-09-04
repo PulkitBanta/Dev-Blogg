@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { EditorConfig } from './editor-config';
-import { PostRequest } from './PostRequest';
+import { PostRequest } from '../PostRequest';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router'
 
@@ -29,22 +29,19 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
     this.postForm = this.fb.group({
       title: '',
+      tag: '',
       body: ''
     })
 
     this.postRequest = {
       id: '',
+      tag: '',
       title: '',
       content: '',
       username: '',
       createdOn: '',
       updatedOn: ''
     }
-
-    // method to edit the content of the post
-    // this.postService.getPost(36).subscribe(res => {
-    //   this.editorData = res.content;
-    // })
   }
 
   onSubmit() {

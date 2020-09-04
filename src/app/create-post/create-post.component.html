@@ -16,6 +16,12 @@
             <label for="title">Title</label>
             <input type="title" class="form-control" placeholder="Title goes here ..." id="title" formControlName="title" autofocus>
         </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="tag">Tag</label>
+                <input type="tag" class="form-control" placeholder="Enter a tag" id="tag" formControlName="tag" autofocus>
+            </div>
+        </div>
         <div class="form-group">
             <label for="body">Body</label>
             <ckeditor formControlName='body' [config]="config"></ckeditor>
