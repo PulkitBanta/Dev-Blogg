@@ -4,6 +4,7 @@ import { EditorConfig } from './editor-config';
 import { PostRequest } from './PostRequest';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
@@ -77,6 +78,12 @@ export class CreatePostComponent implements OnInit {
   postUnsuccessful() {
     this.post = true;
     this.error = false;
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.postForm.get('title').dirty || this.postForm.get('body').dirty || this.postForm.get('tag').dirty) {
+      return confirm('Do you want to discard the changes?');
+    } else true;
   }
 
 }

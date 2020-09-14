@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -9,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './auth.guard';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { CandeactivateGuard } from './candeactivate.guard';
 
 
 const routes: Routes = [
@@ -17,8 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'my-posts', component: MyPostsComponent, canActivate: [AuthGuard] },
-  { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
-  { path: 'edit-post/:id', component: EditPostComponent },
+  { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard], canDeactivate: [CandeactivateGuard] },
+  { path: 'edit-post/:id', component: EditPostComponent, canActivate: [AuthGuard], canDeactivate: [CandeactivateGuard] },
   { path: 'posts/:id', component: PostDetailComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
