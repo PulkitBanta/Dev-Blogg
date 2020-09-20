@@ -50,11 +50,8 @@ export class CreatePostComponent implements OnInit {
     this.postRequest.tag = this.postForm.get('tag').value;
     this.postRequest.content = this.postForm.get('body').value;
 
-    console.log(this.postRequest)
-
     if(this.postRequest.title != null && this.postRequest.content != null) {
       this.postService.addPost(this.postRequest).subscribe( data => {
-        console.log(data);
         this.postSuccessful();
         setTimeout(() => {
           this.router.navigateByUrl('/home')
@@ -81,9 +78,9 @@ export class CreatePostComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.postForm.get('title').dirty || this.postForm.get('body').dirty || this.postForm.get('tag').dirty) {
+    if ((this.postForm.get('title').dirty || this.postForm.get('body').dirty || this.postForm.get('tag').dirty) && this.post) {
       return confirm('Do you want to discard the changes?');
-    } else true;
+    } else return true;
   }
 
 }
