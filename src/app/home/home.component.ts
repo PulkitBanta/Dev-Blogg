@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-import { PostRequest } from '../create-post/PostRequest';
+import { PostRequest } from '../PostRequest';
 
 @Component({
   selector: 'app-home',

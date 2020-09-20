@@ -36,7 +36,7 @@ public class PostController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<PostDto> getPost(@PathVariable Long id) {
-		return new ResponseEntity<>(postService.getPost(id), HttpStatus.OK);
+		return postService.getPost(id);
 	}
 	
 	@GetMapping("users/{username}")
@@ -47,6 +47,11 @@ public class PostController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deletePost(@PathVariable Long id) {
 		return postService.deletePost(id);
+	}
+	
+	@GetMapping("tags/{tagName}")
+	public ResponseEntity<List<PostDto>> getPostsByTags(@PathVariable String tagName) {
+		return new ResponseEntity<>(postService.getPostsByTag(tagName), HttpStatus.OK);
 	}
 	
 }

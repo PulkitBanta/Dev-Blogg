@@ -8,6 +8,7 @@ public class PostDto {
 	private String username;
 	private String createdOn;
 	private String updatedOn;
+	private String tag;
 
 	public Long getId() {
 		return id;
@@ -55,5 +56,13 @@ public class PostDto {
 	
 	public void setUpdatedOn(String updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 }

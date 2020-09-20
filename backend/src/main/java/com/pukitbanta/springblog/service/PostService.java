@@ -46,7 +46,12 @@ public class PostService {
 			return new ResponseEntity<String>("Post Successfully Deleted", HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<String>("Post Not Found", HttpStatus.OK);
+		return new ResponseEntity<String>("Post Not Found", HttpStatus.FORBIDDEN);
+	}
+	
+	public List<PostDto> getPostsByTag(String tag) {
+		List<Post> posts = postRepository.findByTagOrderByCreatedOnDesc(tag);
+		return posts.parallelStream().map(this::mapFromPostToDto).collect(Collectors.toList());
 	}
 
 	private PostDto mapFromPostToDto(Post post) {
@@ -54,6 +59,7 @@ public class PostService {
 		PostDto postDto = new PostDto();
 		
 		postDto.setId(post.getId());
+		postDto.setTag(post.getTag());
 		postDto.setTitle(post.getTitle());
 		postDto.setContent(post.getContent());
 		postDto.setUsername(post.getUsername());
@@ -67,6 +73,7 @@ public class PostService {
 		Post post = new Post();
 		post.setTitle(postDto.getTitle());
 		post.setId(postDto.getId());
+		post.setTag(postDto.getTag());
 		post.setContent(postDto.getContent());
 		User username = authService.getCurrentUser().orElseThrow(()-> new IllegalArgumentException("No user logged in"));
 		post.setUsername(username.getUsername());
@@ -76,9 +83,11 @@ public class PostService {
 		return post;
 	}
 
-	public PostDto getPost(Long id) {
-		Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("For id " + id));
-		return mapFromPostToDto(post);
+	public ResponseEntity<PostDto> getPost(Long id) {
+		if(postRepository.existsById(id)) {
+			Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("For id " + id));
+			return new ResponseEntity<>(mapFromPostToDto(post), HttpStatus.OK);
+		} else return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
 	}
 	
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PostRequest } from './create-post/PostRequest';
+import { PostRequest } from './PostRequest';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from 'ngx-webstorage';
 
@@ -39,5 +39,9 @@ export class PostService {
 
   deletePost(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`, {responseType: 'text'});
+  }
+
+  getPostsByTag(tag: string): Observable<PostRequest> {
+    return this.http.get<PostRequest>(`${this.url}/tags/${tag}`);
   }
 }
