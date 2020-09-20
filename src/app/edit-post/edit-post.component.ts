@@ -4,6 +4,7 @@ import { PostService } from '../post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorConfig } from '../create-post/editor-config';
 import { PostRequest } from '../PostRequest';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-post',
@@ -93,6 +94,12 @@ export class EditPostComponent implements OnInit {
   postUnsuccessful() {
     this.post = true;
     this.error = false;
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.updateForm.get('title').dirty || this.updateForm.get('body').dirty || this.updateForm.get('tag').dirty) {
+      return confirm('Do you want to discard the changes?');
+    } else true;
   }
 
 }
