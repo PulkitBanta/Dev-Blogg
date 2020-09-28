@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { RegisterRequest } from './RegisterRequest';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { LoginRequest } from './LoginRequest';
 import { map } from 'rxjs/operators'
 import { LocalStorageService } from 'ngx-webstorage';
@@ -10,6 +10,8 @@ import { LocalStorageService } from 'ngx-webstorage';
   providedIn: 'root'
 })
 export class AuthService {
+
+  isLoggedIn$ = new Subject<boolean>();
 
   private url = 'port_address/api/auth/'
   
@@ -38,11 +40,14 @@ export class AuthService {
 
   logout() {
     // clear the local storage in the browser
-    this.localStorageService.clear('authenticationToken')
+    this.localStorageService.clear('authenticationToken');
+    this.isLoggedIn$.next(false);
   }
 
-  isAuthenticated(): Boolean {
-    return this.localStorageService.retrieve('authenticationToken') != null;
+  authenticate() {
+    if(this.localStorageService.retrieve('authenticationToken') != null) {
+      this.isLoggedIn$.next(true);
+    }
   }
 
 }

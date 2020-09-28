@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res);
         this.loginSuccessful()
+        this.authService.authenticate();
         setTimeout(() => {
           this.router.navigateByUrl("/home");
         }, 500)

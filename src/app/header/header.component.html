@@ -8,7 +8,7 @@
     </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto"></ul>
-            <ul class="navbar-nav" *ngIf="authService.isAuthenticated()">
+            <ul class="navbar-nav" *ngIf="loggedIn$">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/home">Home</a>
                 </li>
@@ -20,13 +20,13 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item" *ngIf="!authService.isAuthenticated()">
+                <li class="nav-item" *ngIf="!loggedIn$">
                     <a class="nav-link" routerLink="/login">Login</a>
                 </li>
-                <li class="nav-item" *ngIf="!authService.isAuthenticated()">
+                <li class="nav-item" *ngIf="!loggedIn$">
                     <a class="nav-link" routerLink="/register">Signup</a>
                 </li>
-                <li class="nav-item" *ngIf="authService.isAuthenticated()">
+                <li class="nav-item" *ngIf="loggedIn$">
                     <a class="nav-link cursor-pointer" (click)='logout()'>Logout</a>
                 </li>
             </ul>
@@ -55,5 +55,3 @@
         </div>
     </div>
 </nav>
-
-<!-- add a reading theme (optional) -->

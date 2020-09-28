@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  loggedIn$ : boolean;
+
   logoUrl="../../assets/logo.svg"
 
   constructor(
@@ -19,6 +21,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeTheme('light');
+
+    // subscribing to user's login
+    this.authService.isLoggedIn$.subscribe(res => {
+      this.loggedIn$ = res;
+    })
   }
 
   logout() {
