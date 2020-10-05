@@ -52,6 +52,13 @@ export class EditPostComponent implements OnInit {
   getPostContent(id: number) {
     this.postService.getPost(id).subscribe(res => {
       this.updatedRequest = res;
+
+      // setting values in the form
+      this.updateForm.setValue({
+        title: this.updatedRequest.title,
+        tag: this.updatedRequest.tag,
+        body: this.updatedRequest.content
+      });
     })
   }
 
@@ -64,9 +71,6 @@ export class EditPostComponent implements OnInit {
 
     if (this.updateForm.get('tag').dirty)
       this.updatedRequest.tag = this.updateForm.get('tag').value;
-
-    console.log(this.updateForm.get('body').value)
-    console.log(this.updatedRequest)
 
     if (this.updatedRequest.title != null && this.updatedRequest.content != null) {
       this.postService.addPost(this.updatedRequest).subscribe(data => {

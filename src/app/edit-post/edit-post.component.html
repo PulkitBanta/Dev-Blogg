@@ -14,17 +14,17 @@
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="my-5">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="title" class="form-control" placeholder="Title goes here ..." id="title" formControlName="title" [value]='updatedRequest.title' autofocus>
+            <input type="title" class="form-control" placeholder="Title goes here ..." id="title" formControlName="title" autofocus>
         </div>
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="tag">Tag</label>
-                <input type="tag" class="form-control" placeholder="Update the tag" id="tag" formControlName="tag" [value]='updatedRequest.tag' autofocus>
+                <input type="tag" class="form-control" placeholder="Update the tag" id="tag" formControlName="tag" autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="body">Body</label>
-            <ckeditor [data]="updatedRequest.content" formControlName='body' [config]="config"></ckeditor>
+            <ckeditor formControlName='body' [config]="config"></ckeditor>
         </div>
         <button class="btn btn-success">Update</button>
     </form>
