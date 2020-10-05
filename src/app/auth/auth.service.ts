@@ -30,10 +30,11 @@ export class AuthService {
 
   login(loginRequest: LoginRequest): Observable<Boolean> {
     return this.http.post(`${this.url}login`, loginRequest, {responseType: 'text'}).pipe(map( data => {
-      this.localStorageService.store('authenticationToken', data)
       console.log(data)
       this.localStorageService.clear('username');
+      this.localStorageService.clear('authenticationToken');
       this.localStorageService.store('username', loginRequest.username);
+      this.localStorageService.store('authenticationToken', data)
       return true;
     }))
   }
@@ -41,6 +42,7 @@ export class AuthService {
   logout() {
     // clear the local storage in the browser
     this.localStorageService.clear('authenticationToken');
+    this.localStorageService.clear('username');
     this.isLoggedIn$.next(false);
   }
 
