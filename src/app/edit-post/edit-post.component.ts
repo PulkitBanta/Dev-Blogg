@@ -101,7 +101,7 @@ export class EditPostComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.updateForm.get('title').dirty || this.updateForm.get('body').dirty || this.updateForm.get('tag').dirty) {
+    if (this.updateForm.get('title').dirty || this.updateForm.get('body').dirty || this.updateForm.get('tag').dirty && this.post) {
       return confirm('Do you want to discard the changes?');
     } else return true;
   }
