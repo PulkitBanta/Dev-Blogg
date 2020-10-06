@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { PostRequest } from '../PostRequest';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-my-posts',
   templateUrl: './my-posts.component.html',
   styleUrls: ['./my-posts.component.css']
 })
-export class MyPostsComponent implements OnInit {
+export class MyPostsComponent implements OnInit, OnDestroy {
 
   posts$: PostRequest[] = []
   faTrash = faTrash;
+
+  sub: Subscription
 
   constructor(
     private postService: PostService,
@@ -20,7 +23,7 @@ export class MyPostsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.postService.getUserPosts().subscribe(res => {
+    this.sub = this.postService.getUserPosts().subscribe(res => {
       this.posts$ = res;
     }, error => console.log(error))
   }
@@ -40,6 +43,10 @@ export class MyPostsComponent implements OnInit {
 
   editPost(id: number) {
     this.router.navigateByUrl(`/edit-post/${id}`)
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

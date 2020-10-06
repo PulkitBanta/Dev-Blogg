@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { PostService } from '../post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorConfig } from '../create-post/editor-config';
 import { PostRequest } from '../PostRequest';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
   styleUrls: ['./edit-post.component.css']
 })
-export class EditPostComponent implements OnInit {
+export class EditPostComponent implements OnInit, OnDestroy {
+
+  sub: Subscription
+  updateSub: Subscription
 
   updateForm: FormGroup
   post: Boolean = true
@@ -50,7 +53,7 @@ export class EditPostComponent implements OnInit {
   }
 
   getPostContent(id: number) {
-    this.postService.getPost(id).subscribe(res => {
+    this.sub = this.postService.getPost(id).subscribe(res => {
       this.updatedRequest = res;
 
       // setting values in the form
@@ -73,7 +76,7 @@ export class EditPostComponent implements OnInit {
       this.updatedRequest.tag = this.updateForm.get('tag').value;
 
     if (this.updatedRequest.title != null && this.updatedRequest.content != null) {
-      this.postService.addPost(this.updatedRequest).subscribe(data => {
+      this.updateSub = this.postService.addPost(this.updatedRequest).subscribe(data => {
         console.log(data);
         this.postSuccessful();
         setTimeout(() => {
@@ -104,6 +107,11 @@ export class EditPostComponent implements OnInit {
     if (this.updateForm.get('title').dirty || this.updateForm.get('body').dirty || this.updateForm.get('tag').dirty && this.post) {
       return confirm('Do you want to discard the changes?');
     } else return true;
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+    this.updateSub.unsubscribe();
   }
 
 }

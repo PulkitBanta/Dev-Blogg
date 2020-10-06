@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PostRequest } from '../PostRequest';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css']
 })
-export class PostDetailComponent implements OnInit {
+export class PostDetailComponent implements OnInit, OnDestroy {
 
   post$: PostRequest
+
+  sub: Subscription
 
   constructor(
     private postService: PostService,
@@ -33,10 +36,13 @@ export class PostDetailComponent implements OnInit {
 
   getPost() {
     const id = +this.route.snapshot.paramMap.get('id')
-    this.postService.getPost(id)
-      .subscribe( res => {
-        this.post$ = res
-      }, error => console.log(error))
+    this.sub = this.postService.getPost(id).subscribe(res => {
+      this.post$ = res
+    }, error => console.log(error))
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { EditorConfig } from './editor-config';
 import { PostRequest } from '../PostRequest';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router'
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css']
 })
-export class CreatePostComponent implements OnInit {
+export class CreatePostComponent implements OnInit, OnDestroy {
+
+  sub: Subscription
 
   postForm: FormGroup
   post: Boolean = true
@@ -51,7 +53,7 @@ export class CreatePostComponent implements OnInit {
     this.postRequest.content = this.postForm.get('body').value;
 
     if(this.postRequest.title != null && this.postRequest.content != null) {
-      this.postService.addPost(this.postRequest).subscribe( data => {
+      this.sub = this.postService.addPost(this.postRequest).subscribe( data => {
         this.postSuccessful();
         setTimeout(() => {
           this.router.navigateByUrl('/home')
@@ -81,6 +83,10 @@ export class CreatePostComponent implements OnInit {
     if ((this.postForm.get('title').dirty || this.postForm.get('body').dirty || this.postForm.get('tag').dirty) && this.post) {
       return confirm('Do you want to discard the changes?');
     } else return true;
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterRequest } from '../RegisterRequest';
 import { AuthService } from '../auth.service';
 import { FormValidationService } from '../form-validation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+
+  sub: Subscription
 
   registerForm: FormGroup
   signup = false
   bool = true
-  errorText = ""
   private registerRequest: RegisterRequest;
 
   constructor(
@@ -50,7 +52,7 @@ export class RegisterComponent implements OnInit {
       this.registerRequest.password = this.registerForm.get('password').value;
       this.registerRequest.confirmPassword = this.registerForm.get('confirmPassword').value;
 
-      this.authService.register(this.registerRequest).subscribe(res => {
+      this.sub = this.authService.register(this.registerRequest).subscribe(res => {
         this.registerSuccessful()
       }, error => {
         this.registerUnsuccessful()
@@ -70,6 +72,10 @@ export class RegisterComponent implements OnInit {
   registerSuccessful() {
     this.bool = true
     this.signup = true
+  }
+
+  ngOnDestroy():void {
+    this.sub.unsubscribe();
   }
 
 }

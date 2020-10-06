@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginRequest } from '../LoginRequest';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  loginSub: Subscription
 
   loginForm: FormGroup
   bool = true
@@ -38,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.loginRequest.username = this.loginForm.get('username').value;
     this.loginRequest.password = this.loginForm.get('password').value;
 
-    this.authService.login(this.loginRequest).subscribe(
+    this.loginSub = this.authService.login(this.loginRequest).subscribe(
       res => {
         console.log(res);
         this.loginSuccessful()
@@ -62,6 +65,10 @@ export class LoginComponent implements OnInit {
   loginUnsuccessful() {
     this.loggedin = true;
     this.bool = false;
+  }
+
+  ngOnDestroy(): void {
+    this.loginSub.unsubscribe();
   }
 
 }

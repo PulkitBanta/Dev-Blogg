@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PostService } from '../post.service';
 import { PostRequest } from '../PostRequest';
 
@@ -7,19 +8,25 @@ import { PostRequest } from '../PostRequest';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   posts$: PostRequest[] = []
+
+  sub: Subscription
 
   constructor(
     private postService: PostService
   ) { }
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe( res => {
+    this.sub = this.postService.getPosts().subscribe( res => {
       this.posts$ = res;
     },
     error => console.log(error))
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }
