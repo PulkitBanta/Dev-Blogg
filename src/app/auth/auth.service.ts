@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { RegisterRequest } from './RegisterRequest';
 import { Observable, Subject } from 'rxjs';
-import { LoginRequest } from './LoginRequest';
 import { map } from 'rxjs/operators'
 import { LocalStorageService } from 'ngx-webstorage';
+
+import { LoginRequest } from './LoginRequest';
+import { RegisterRequest } from './RegisterRequest';
 
 @Injectable({
   providedIn: 'root'

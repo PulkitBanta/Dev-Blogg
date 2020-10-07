@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginRequest } from '../LoginRequest';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { AuthService } from '../auth.service';
+import { LoginRequest } from '../LoginRequest';
+import { ScrollService } from 'src/app/scroll.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private scrollService: ScrollService
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +58,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(error)
       }
     )
+
+    this.scrollService.scrollTop();
   }
 
   loginSuccessful() {

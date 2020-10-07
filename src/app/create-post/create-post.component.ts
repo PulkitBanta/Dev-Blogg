@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { EditorConfig } from './editor-config';
 import { PostRequest } from '../PostRequest';
 import { PostService } from '../post.service';
+import { ScrollService } from '../scroll.service';
 
 @Component({
   selector: 'app-create-post',
@@ -27,7 +28,8 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private scrollService: ScrollService
   ) { }
 
   ngOnInit(): void {
@@ -70,6 +72,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
       this.postUnsuccessful();
     }
 
+    this.scrollService.scrollTop();
   }
 
   postSuccessful() {

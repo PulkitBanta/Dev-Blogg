@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { RegisterRequest } from '../RegisterRequest';
-import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
+
+import { AuthService } from '../auth.service';
+import { RegisterRequest } from '../RegisterRequest';
 import { ScrollService } from 'src/app/scroll.service';
 
 @Component({

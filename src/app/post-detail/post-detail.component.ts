@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PostRequest } from '../PostRequest';
-import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { PostRequest } from '../PostRequest';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-detail',

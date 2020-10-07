@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PostService } from '../post.service';
-import { PostRequest } from '../PostRequest';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { PostService } from '../post.service';
+import { PostRequest } from '../PostRequest';
 
 @Component({
   selector: 'app-my-posts',
