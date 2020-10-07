@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms'
-import { PostService } from '../post.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+
 import { EditorConfig } from '../create-post/editor-config';
 import { PostRequest } from '../PostRequest';
-import { Observable, Subscription } from 'rxjs';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -33,9 +34,9 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateForm = this.fb.group({
-      title: '',
-      body: '',
-      tag: ''
+      title: ['', [Validators.required, Validators.minLength(20)]],
+      tag: ['', Validators.required],
+      body: ['', [Validators.required, Validators.minLength(200)]]
     })
 
     this.updatedRequest = {
@@ -75,7 +76,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
     if (this.updateForm.get('tag').dirty)
       this.updatedRequest.tag = this.updateForm.get('tag').value;
 
-    if (this.updatedRequest.title != null && this.updatedRequest.content != null) {
+    if(this.updateForm.valid && this.updateForm.dirty) {
       this.updateSub = this.postService.addPost(this.updatedRequest).subscribe(data => {
         console.log(data);
         this.postSuccessful();
@@ -111,7 +112,9 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
-    this.updateSub.unsubscribe();
+
+    if(this.updateSub !== undefined)
+      this.updateSub.unsubscribe();
   }
 
 }

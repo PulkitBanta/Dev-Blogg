@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
+import { Observable, Subscription } from 'rxjs';
+
 import { EditorConfig } from './editor-config';
 import { PostRequest } from '../PostRequest';
 import { PostService } from '../post.service';
-import { Router } from '@angular/router'
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-post',
@@ -31,9 +32,9 @@ export class CreatePostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
-      title: '',
-      tag: '',
-      body: ''
+      title: ['', [Validators.required, Validators.minLength(20)]],
+      tag: ['', Validators.required],
+      body: ['', [Validators.required, Validators.minLength(200)]]
     })
 
     this.postRequest = {
@@ -48,11 +49,13 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.postRequest.title = this.postForm.get('title').value;
-    this.postRequest.tag = this.postForm.get('tag').value;
-    this.postRequest.content = this.postForm.get('body').value;
 
-    if(this.postRequest.title != null && this.postRequest.content != null) {
+    if(this.postForm.valid) {
+      // getting values and adding it to post request
+      this.postRequest.title = this.postForm.get('title').value;
+      this.postRequest.tag = this.postForm.get('tag').value;
+      this.postRequest.content = this.postForm.get('body').value;
+
       this.sub = this.postService.addPost(this.postRequest).subscribe( data => {
         this.postSuccessful();
         setTimeout(() => {
@@ -86,7 +89,8 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if(this.sub !== undefined)
+      this.sub.unsubscribe();
   }
 
 }
