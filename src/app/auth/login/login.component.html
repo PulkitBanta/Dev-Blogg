@@ -16,10 +16,12 @@
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="my-5">
         <div class="form-group">
-            <input type="username" class="form-control" placeholder="Enter username" id="username" formControlName='username' required autofocus>
+            <input type="username" class="form-control" placeholder="Enter username" id="username" formControlName='username' autofocus>
+            <small *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched" id="username-help" class="form-text text-danger">Username must be atleast 6 charaters long</small>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName='password' required>
+            <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName='password'>
+            <small *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched" id="pwd-help" class="form-text text-danger">Password must contain: one upercase, one lowercase letter and between 6 to 20 characters.</small>
         </div>
         <div class="row">
             <div class="col-md-6">

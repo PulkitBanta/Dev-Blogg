@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterRequest } from '../RegisterRequest';
 import { AuthService } from '../auth.service';
-import { FormValidationService } from '../form-validation.service';
 import { Subscription } from 'rxjs';
+import { ScrollService } from 'src/app/scroll.service';
 
 @Component({
   selector: 'app-register',
@@ -22,16 +22,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private fvService: FormValidationService
+    private srollService: ScrollService
   ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', Validators.required, Validators.minLength(6)],
       email: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-      terms: [false, Validators.required]
+      terms: [true]
     });
 
     this.registerRequest = {
@@ -44,24 +44,23 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-
-    if (this.fvService.validateEmail(this.registerForm.get('email').value) && this.fvService.validatePassword(this.registerForm.get('password').value) && (this.registerForm.value.password === this.registerForm.value.confirmPassword) && this.registerForm.value.terms) {
-
-      this.registerRequest.username = this.registerForm.get('username').value;
-      this.registerRequest.email = this.registerForm.get('email').value;
-      this.registerRequest.password = this.registerForm.get('password').value;
-      this.registerRequest.confirmPassword = this.registerForm.get('confirmPassword').value;
-
-      this.sub = this.authService.register(this.registerRequest).subscribe(res => {
-        this.registerSuccessful()
-      }, error => {
-        this.registerUnsuccessful()
-        console.log(error);
+      if(this.registerForm.valid) {
+        this.registerRequest.username = this.registerForm.get('username').value;
+        this.registerRequest.email = this.registerForm.get('email').value;
+        this.registerRequest.password = this.registerForm.get('password').value;
+        this.registerRequest.confirmPassword = this.registerForm.get('confirmPassword').value;
+  
+        this.sub = this.authService.register(this.registerRequest).subscribe(res => {
+          this.registerSuccessful()
+        }, error => {
+          this.registerUnsuccessful()
+          console.log(error);
+        })
+      } else {
+        this.registerUnsuccessful();
       }
-      )
-    } else {
-      this.registerUnsuccessful();
-    }
+
+      this.srollService.scrollTop();
   }
 
   registerUnsuccessful() {
@@ -75,7 +74,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy():void {
-    this.sub.unsubscribe();
+    if(this.sub !== undefined)
+      this.sub.unsubscribe();
   }
 
 }

@@ -103,6 +103,11 @@ code {
     color: #e858ad !important;
 }
 
+/* form css */
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
 /* footer css */
 footer {
     background-color: var(--background-color);

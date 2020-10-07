@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScrollService } from '../scroll.service';
 
 @Component({
   selector: 'app-page-top',
@@ -7,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageTopComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private scrollService: ScrollService
+  ) { }
 
   ngOnInit(): void {
   }
 
   pageTop() {
-    window.scrollTo({left: 0, top: 0, behavior: 'smooth'});
+    this.scrollService.scrollTop();
   }
 
 }
