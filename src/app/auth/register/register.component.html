@@ -27,7 +27,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName="password">
-                    <small *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched" id="emailHelp" class="form-text text-danger">Password must contain: one upercase, one lowercase letter and between 6 to 20 characters.</small>
+                    <small *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched" id="emailHelp" class="form-text text-danger">Password must contain: one upercase, one lowercase letter, a number (0-9) and must be atleast 6 characters long.</small>
                 </div>
             </div>
             <div class="col-md-6">

@@ -29,9 +29,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/)]],
+      confirmPassword: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/)]],
       terms: [true]
     });
 
@@ -45,11 +45,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-      if(this.registerForm.valid) {
+      if(this.registerForm.valid && this.registerForm.get('password').value === this.registerForm.get('confirmPassword').value) {
         this.registerRequest.username = this.registerForm.get('username').value;
         this.registerRequest.email = this.registerForm.get('email').value;
         this.registerRequest.password = this.registerForm.get('password').value;
         this.registerRequest.confirmPassword = this.registerForm.get('confirmPassword').value;
+        console.log("called")
   
         this.sub = this.authService.register(this.registerRequest).subscribe(res => {
           this.registerSuccessful()
