@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="card-text m-md-5" innerHTML="{{ post.content.length > 500 ? (post.content | slice: 0:500) + ' ...' : post.content }}"></div>
+                <div class="card-text m-md-5" innerHTML="{{ post.content | truncate: 500}}"></div>
                 <div class="text-center">
                     <a routerLink="/posts/{{post.id}}">Read more ...</a>
                 </div>

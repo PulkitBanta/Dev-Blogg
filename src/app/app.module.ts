@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { PageTopComponent } from './page-top/page-top.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { TruncatePipe } from './truncate.pipe'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     PageNotFoundComponent,
     MyPostsComponent,
     PageTopComponent,
-    EditPostComponent
+    EditPostComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
