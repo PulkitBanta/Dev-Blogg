@@ -75,7 +75,9 @@ $ mvn spring-boot:run
 - [x] Delete Post.
 - [x] Reading Mode.
 - [x] Edit Post.
-- [ ] Post Tags.
+- [x] Post Tags.
+
+### Suggest some new features in the [issues](https://github.com/PulkitBanta/Dev-Blogg/issues).
 
 ## Built With
 
