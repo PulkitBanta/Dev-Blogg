@@ -63,12 +63,12 @@ p, h1, h2, h3, h4, h5, h6, small {
 }
 
 .nav-link {
-    color: var(--subtext) !important;
+    color: var(--subtext);
     font-weight: 600;
 }
 
-.nav-link:hover {
-    color: var(--text) !important;
+.nav-link:hover, .nav-active {
+    color: var(--text);
 }
 
 .cursor-pointer {
@@ -76,11 +76,11 @@ p, h1, h2, h3, h4, h5, h6, small {
 }
 
 .navbar-toggler {
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 .navbar-toggler-icon {
-    background-image: var(--url) !important ;
+    background-image: var(--url) ;
 }
 
 svg {
@@ -91,16 +91,16 @@ svg {
 
 .card {
     background-color: var(--card-bg) !important;
-    color: var(--text) !important;
+    color: var(--text);
     border: none !important;
 }
 
 hr {
-    background-color: var(--footer-shadow) !important;
+    background-color: var(--footer-shadow);
 }
 
 code {
-    color: #e858ad !important;
+    color: #e858ad;
 }
 
 /* form css */
