@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgxWebstorageModule } from 'ngx-webstorage';
+import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from 'ckeditor4-angular';
 
 import { AppComponent } from './app.component';
@@ -44,7 +43,6 @@ import { TruncatePipe } from './truncate.pipe'
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot(),
     CKEditorModule
   ],
   providers: [],

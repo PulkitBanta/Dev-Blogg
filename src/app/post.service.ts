@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PostRequest } from './PostRequest';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +9,14 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class PostService {
 
   private url = 'port_address/api/posts'
-  currentUser = this.localStorageService.retrieve('username')
+  currentUser = localStorage.getItem('username')
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'application/json' })
   }
 
   constructor(
-    private http: HttpClient,
-    private localStorageService: LocalStorageService
+    private http: HttpClient
   ) { }
 
   addPost(postRequest: PostRequest): Observable<any> {

@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginSub = this.authService.login(this.loginRequest).subscribe(
       res => {
         console.log(res);
+        this.authService.isLoggedIn$.next(true);
         this.loginSuccessful()
-        this.authService.authenticate();
         setTimeout(() => {
           this.router.navigateByUrl("/home");
         }, 500)
