@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable,  } from 'rxjs';
 import { map } from 'rxjs/operators'
-import { LocalStorageService } from 'ngx-webstorage';
+// import localStorage } from 'ngx-webstorage';
 
 import { LoginRequest } from './LoginRequest';
 import { RegisterRequest } from './RegisterRequest';
@@ -12,7 +12,7 @@ import { RegisterRequest } from './RegisterRequest';
 })
 export class AuthService {
 
-  isLoggedIn$ = new Subject<boolean>();
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
   private url = 'port_address/api/auth/'
   
@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService
+    // localStorage
   ) { }
 
   register(registerRequest: RegisterRequest): Observable<any> {
@@ -32,23 +32,29 @@ export class AuthService {
   login(loginRequest: LoginRequest): Observable<Boolean> {
     return this.http.post(`${this.url}login`, loginRequest, {responseType: 'text'}).pipe(map( data => {
       console.log(data)
-      this.localStorageService.clear('username');
-      this.localStorageService.clear('authenticationToken');
-      this.localStorageService.store('username', loginRequest.username);
-      this.localStorageService.store('authenticationToken', data)
+      localStorage.clear();
+      // localStorage.clear('authenticationToken');
+      localStorage.setItem('username', loginRequest.username);
+      localStorage.setItem('authenticationToken', data)
       return true;
     }))
   }
 
   logout() {
     // clear the local storage in the browser
-    this.localStorageService.clear('authenticationToken');
-    this.localStorageService.clear('username');
+    localStorage.clear();
+    // localStorage.clear('username');
     this.isLoggedIn$.next(false);
   }
 
   authenticate() {
-    if(this.localStorageService.retrieve('authenticationToken') != null) {
+    if(localStorage.getItem('authenticationToken') != null) {
+      this.isLoggedIn$.next(true);
+    }
+  }
+
+  autoLogin() {
+    if(localStorage.getItem('authenticationToken') && localStorage.getItem('username')) {
       this.isLoggedIn$.next(true);
     }
   }
