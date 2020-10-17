@@ -43,12 +43,6 @@ export class AuthService {
     this.isLoggedIn$.next(false);
   }
 
-  // authenticate() {
-  //   if(localStorage.getItem('authenticationToken') != null) {
-  //     this.isLoggedIn$.next(true);
-  //   }
-  // }
-
   autoLogin() {
     if(localStorage.getItem('authenticationToken') && localStorage.getItem('username')) {
       this.isLoggedIn$.next(true);
