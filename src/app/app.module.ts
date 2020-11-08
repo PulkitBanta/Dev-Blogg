@@ -19,7 +19,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { PageTopComponent } from './page-top/page-top.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
-import { TruncatePipe } from './truncate.pipe'
+import { TruncatePipe } from './truncate.pipe';
+import { ScrollDirective } from './page-top/scroll.directive'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TruncatePipe } from './truncate.pipe'
     MyPostsComponent,
     PageTopComponent,
     EditPostComponent,
-    TruncatePipe
+    TruncatePipe,
+    ScrollDirective
   ],
   imports: [
     BrowserModule,
